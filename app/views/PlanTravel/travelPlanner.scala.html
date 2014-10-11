@@ -1,0 +1,55 @@
+@(clientRequest:Option[Client_Request] = None)(implicit user:Option[User])
+@import views.html.helper._
+
+@main(pageTitle = "Travel Planner") {
+    <div class="widewrapper">
+	    <div class="container content">
+	        <div class="row">
+
+				<section class="trips-section col-md-8 faq">
+					<h2> Plan your travel </h2>
+
+                   @form(routes.TravelPlanner.sendRequest) {
+
+                        <input type="hidden" name="request_id" value="@clientRequest.map(_.id)"/>
+
+                        <div class="trips">
+                            @if( !clientRequest.isDefined || clientRequest.get.trips.isEmpty ){
+                                @trip(hidden = false)
+                            }else{
+                               @for((tripInstance,index) <- clientRequest.get.trips.zipWithIndex){
+                                   @trip(tripRequest=Some(tripInstance), tripNumber = index+1, hidden = false)
+                               }
+                            }
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group centralize">
+                                <div class="btn btn-grove-one btn-lg add-trip-action" data-url="@routes.TravelPlanner.tripView"><i class="glyphicons plus"></i> Add another trip </div>
+                            </div>
+                        </div>
+
+                        <hr/>
+
+                        @tripReturn(clientRequest)
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Notes </label>
+                                <textarea class="form-control " id="message" name="notes" rows="5">@clientRequest.map(_.comments)</textarea>
+                            </div>
+                        </div>
+
+
+						<button type="submit" class="btn btn-grove-one btn-xlg btn-bold pull-right"> Send Application </button>
+                   }
+
+                </section>
+
+	          @views.html.RightSidebar.contactInfo()
+
+	        </div>
+	    </div>
+	</div>
+}

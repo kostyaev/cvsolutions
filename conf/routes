@@ -1,0 +1,59 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET         /                          controllers.Application.landingPage()
+
+# About Us Page
+GET         /aboutus                  controllers.Application.aboutus()
+POST       /sendMessage              controllers.Mailer.sendMessage
+
+# FAQ Page
+GET         /faq                        controllers.Application.faq()
+
+# Map static resources from the /public folder to the /assets URL path
+GET         /assets/*file              controllers.Assets.at(path="/public", file)
+
+
+# Budget order forms
+GET         /travelplanner             controllers.Application.travelPlanner(id:Option[String] ?= None)
+GET         /removeplan                controllers.Application.removePlan(id:Option[String] ?= None)
+
+# Budget order forms
+GET         /dashboard                 controllers.Application.dashboard
+
+# Admin Response Form to a client request
+GET         /travelplanresponse        controllers.Application.travelResponse(id:Option[String] ?= None)
+GET         /seeresponse               controllers.Application.seeResponse(id:Option[String] ?= None)
+
+#Request Trip view (Slice)
+POST        /tripView                  controllers.TravelPlanner.tripView
+
+#Request Flight view (Slice)
+POST        /flightView                controllers.TravelPlanner.flightView
+
+#Request Response trip view (Slice)
+POST        /responseTripView          controllers.TravelPlanner.responseTrip
+
+#Request Response plan view (Slice)
+POST        /responsePlanView          controllers.TravelPlanner.responsePlanView
+POST        /submitItinerary           controllers.TravelPlanner.submitItinerary
+
+#Request trip
+POST        /sendRequest               controllers.TravelPlanner.sendRequest
+POST        /dashboard                 controllers.Application.dashboard
+
+# Login and Register Page
+GET         /login                     controllers.Authentication.login()
+POST        /login                     controllers.Authentication.authenticate()
+POST        /register                  controllers.Authentication.register()
+
+# Logout Page
+GET         /logout                    controllers.Authentication.logout()
+
+#Favicon
+#GET     /favicon.ico                controllers.Assets.at(path="/public/images", file="favicon.png")
+
+
+
