@@ -1,0 +1,47 @@
+@(languageRequest:Option[Trip_Request] = None, languageNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
+
+<div class="language @if(hidden){ temp-hide }" data-number="@languageNumber">
+    <div href="#language@languageNumber" class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Язык № <span class="language-number-id">@languageNumber</span></div>
+    <input type="hidden" name="trips[@{languageNumber - 1}].trip_id" value="@languageRequest.map(_.id)">
+    <input type="hidden" name="trips[@{languageNumber - 1}].trip_number" value="@{languageNumber - 1}">
+
+
+    <div class="col-md-offset-0 row">
+        <div class="col-sm-12 form-group">
+            <label for="ret_location"> Язык</label>
+            <input class="form-control input-lg" type="text" id="course" name="course" value="" placeholder="Язык">
+        </div>
+    </div>
+
+    <div class="col-md-offset-0 row">
+        <div class="col-sm-12 form-group">
+            <label for="ret_location"> Уровень владения</label>
+            <input class="form-control input-lg" type="text" id="course" name="course" value="" placeholder="Уровень владения">
+        </div>
+    </div>
+
+    <div class="col-md-offset-0 row">
+        <div class="col-sm-12 form-group">
+            <label for="ret_location"> Сертификат</label>
+            <input class="form-control input-lg" type="text" id="course" name="course" value="" placeholder="Сертификат">
+        </div>
+    </div>
+
+    <div class="col-md-offset-0 row">
+        <div class="col-sm-12 form-group">
+            <label for="ret_location"> Полученная квалификация</label>
+            <input class="form-control input-lg" type="text" id="course" name="course" value="" placeholder="Полученная квалификация">
+        </div>
+    </div>
+
+    <div class="col-md-offset-0 row">
+        <div class="col-sm-12 form-group">
+            <label for="ret_location"> Год получения сертификата</label>
+            <input class="form-control input-lg" type="text" id="course" name="course" value="" placeholder="Год получения сертификата">
+        </div>
+    </div>
+
+
+
+</div>
+<hr/>

@@ -3,14 +3,24 @@
 # ~~~~
 
 # Home page
+
+GET         /createResume              controllers.Resume.createResume
+
+#Request Trip view (Slice)
+POST        /collegeView               controllers.Resume.collegeView
+POST        /moocView                  controllers.Resume.moocView
+POST        /jobView                   controllers.Resume.jobView
+POST        /languageView              controllers.Resume.languageView
+
+
 GET         /                              controllers.Application.landingPage()
 
 # About Us Page
-GET         /aboutus                       controllers.Application.aboutus()
-POST        /sendMessage                   controllers.Mailer.sendMessage
+GET         /aboutus                   controllers.Application.aboutus()
+POST        /sendMessage               controllers.Mailer.sendMessage
 
 # FAQ Page
-GET         /faq                           controllers.Application.faq()
+GET         /faq                       controllers.Application.faq()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                  controllers.Assets.at(path="/public", file)

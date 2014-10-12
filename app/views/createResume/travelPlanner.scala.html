@@ -1,0 +1,181 @@
+@(clientRequest:Option[Client_Request] = None)(implicit user:Option[User])
+@import views.html.helper._
+
+@main(pageTitle = "Travel Planner") {
+    <div class="widewrapper">
+        <div class="container content">
+            <div class="row">
+                @form(routes.TravelPlanner.sendRequest) {
+                    <input type="hidden" name="request_id" value="@clientRequest.map(_.id)"/>
+
+                    <section class="personal-section col-md-8 faq">
+                        <h2> Личная информация </h2>
+                        @personal(clientRequest)
+                    </section>
+
+                    @views.html.RightSidebar.contactInfo()
+
+
+                    <section class="colleges-section col-md-8 faq">
+                        <h2> Образование </h2>
+
+                        <div class="colleges units">
+                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                            @college(hidden = false)
+                        } else {
+                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
+                                @college(collegeRequest = Some(tripInstance), collegeNumber = index + 1, hidden = false)
+                            }
+                        }
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group centralize">
+                                <div class="btn btn-grove-one btn-lg add-college-action" data-url="@routes.Resume.collegeView"><i class="glyphicons plus"></i>
+                                    Добавить университет </div>
+                            </div>
+                        </div>
+
+
+
+                    </section>
+
+
+                    <section class="moocs-section col-md-8 faq">
+                        <h2> Дополнительное образование </h2>
+
+                        <div class="moocs units">
+                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                            @mooc(hidden = false)
+                        } else {
+                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
+                                @mooc(moocRequest = Some(tripInstance), moocNumber = index + 1, hidden = false)
+                            }
+                        }
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group centralize">
+                                <div class="btn btn-grove-one btn-lg add-mooc-action" data-url="@routes.Resume.moocView"><i class="glyphicons plus"></i>
+                                    Добавить тренинг </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section class="jobs-section col-md-8 faq">
+                        <h2> Работа </h2>
+
+                        <div class="jobs units">
+                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                            @job(hidden = false)
+                        } else {
+                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
+                                @job(jobRequest = Some(tripInstance), jobNumber = index + 1, hidden = false)
+                            }
+                        }
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group centralize">
+                                <div class="btn btn-grove-one btn-lg add-job-action" data-url="@routes.Resume.jobView"><i class="glyphicons plus"></i>
+                                    Добавить сведения о работе </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section class="languages-section col-md-8 faq">
+                        <h2> Языки </h2>
+
+                        <div class="languages units">
+                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                            @language(hidden = false)
+                        } else {
+                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
+                                @language(languageRequest = Some(tripInstance), languageNumber = index + 1, hidden = false)
+                            }
+                        }
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group centralize">
+                                <div class="btn btn-grove-one btn-lg add-language-action" data-url="@routes.Resume.languageView"><i class="glyphicons plus"></i>
+                                    Добавить язык </div>
+                            </div>
+                        </div>
+
+                    </section>
+
+
+                    <section class="bottom-section col-md-8 faq">
+                        <h2> Дополнительные сведения </h2>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Владение компьютерными программами. Перечислите название и уровень владения </label>
+                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Публикации, статьи, патенты </label>
+                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Увлечения и хобби </label>
+                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Участие в организациях и спортивных секциях </label>
+                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Прочая информация </label>
+                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="message"> Наличие водительского удостоверения (укажите категорию) </label>
+                                <label class=" checkbox">
+                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
+                                    Категория "A"
+                                </label>
+                                <label class=" checkbox">
+                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
+                                    Категория "B"
+                                </label>
+                                <label class=" checkbox">
+                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
+                                    Категория "C"
+                                </label>
+                                <label class=" checkbox">
+                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
+                                    Категория "D"
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-grove-one btn-xlg btn-bold pull-right"> Отправить резюме</button>
+                    </section>
+
+                }
+
+            </div>
+        </div>
+    </div>
+}

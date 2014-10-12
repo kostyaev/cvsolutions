@@ -1,11 +1,12 @@
-@()
-@main(pageTitle = "My Travel Plans") {
+@()(implicit user:Option[User])
+@main(pageTitle = "Мои резюме") {
 
+    @user.map{ currentUser =>
       <div class="widewrapper dashboard">
         <div class="container content">
             <div class="row">
 
-                @if(true){
+                @if(currentUser.travelPlans.isEmpty){
                     <section class="col-md-6 col-md-offset-1 with-margin empty-dashboard">
 
                         <div class="row ">
@@ -37,11 +38,9 @@
 
                         <div class="row ">
                             <div class="col-md-2">
-                                <a href="@routes.Application.travelPlanner()"><div class="btn btn-grove-one btn-lg"><i class="glyphicons plus"></i> Add travel request </div></a>
+                                <a href="@routes.Application.travelPlanner()"><div class="btn btn-grove-one btn-lg"><i class="glyphicons plus"></i> Добавить резюме </div></a>
                             </div>
-                            <div class="col-md-offset-2 col-md-8">
-                                <input type="search" class="form-control input-lg search-input" placeholder="Search travel requests">
-                            </div>
+
                         </div>
 
                         <div class="row with-margin">
@@ -49,20 +48,19 @@
                                <caption></caption>
                                <thead>
                                    <tr>
-                                       @if(true){
+                                       @if(user.exists(_.isAdmin)){
                                            <td>Client</td>
                                        }
-                                       <td>Trips</td>
-                                       <td>Departure Date</td>
-                                       <td>Action</td>
+                                       <td>Резюме</td>
+                                       <td>Статус</td>
+                                       <td>Дата изменения</td>
+                                       <td>Действие</td>
                                    </tr>
 
                                </thead>
                                <tbody>
 
-                               @*@for( plan <- currentUser.travelPlans) {
-
-
+                               @for( plan <- currentUser.travelPlans) {
                                    <tr class="">
                                        @if(user.exists(_.isAdmin)){
                                            <td>@plan.user_id.name</td>
@@ -72,20 +70,16 @@
                                             <span class="city-name">@plan.trips.headOption.map(_.depart_location)</span> to <span class="city-name">@plan.trips.last.arrival_location</span>
                                            @if(!plan.trips.isEmpty){ (@{plan.trips.size} trips ) }
                                        </td>
+                                       <td></td>
                                        <td>@plan.trips.headOption.map(_.depart_date.format("MM/dd/yyyy"))</td>
                                        <td>
-                                           @if(user.exists(_.isAdmin)){
-                                               <a href="@routes.Application.travelResponse(Some(plan.id))" class="btn btn-grove-one">Respond</a>
-                                           }else{
-                                               <a href="@routes.Application.seeResponse(Some(plan.id))" class="btn btn-grove-one">See Response</a>
-                                           }
-                                            <a href="@routes.Application.travelPlanner(Some(plan.id))" class="btn btn-grove-one">Edit</a>
-                                            <a href="@routes.Application.removePlan(Some(plan.id))" class="btn btn-grove-one">Remove</a>
+                                            <a href="@routes.Application.travelPlanner(Some(plan.id))" class="btn btn-grove-one">Редактировать</a>
+                                            <a href="@routes.Application.removePlan(Some(plan.id))" class="btn btn-grove-one">Удалить</a>
 
                                        </td>
                                    </tr>
 
-                               }*@
+                               }
 
                                </tbody>
                            </table>
@@ -101,5 +95,5 @@
             </div>
         </div>
     </div>
-
+    }
 }

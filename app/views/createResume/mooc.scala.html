@@ -1,0 +1,53 @@
+@(moocRequest:Option[Trip_Request] = None, moocNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
+
+<div class="mooc @if(hidden){ temp-hide }" data-number="@moocNumber">
+    <div href="#mooc@moocNumber" class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Тренинг № <span class="mooc-number-id">@moocNumber</span></div>
+    <input type="hidden" name="trips[@{moocNumber - 1}].trip_id" value="@moocRequest.map(_.id)">
+    <input type="hidden" name="trips[@{moocNumber - 1}].trip_number" value="@{moocNumber - 1}">
+
+    <div id="mooc@moocNumber" class="accordion-collapse collapse @if(open){ in }">
+        <div class="mooc-content">
+
+            <div class="col-md-offset-0 row">
+                <div class="col-sm-12 form-group">
+                    <label > Дата получения</label>
+                    <div class="date-picker" class="input-append">
+                        <input readonly class="form-control input-lg add-on" data-format="MM/dd/yyyy"  name="trips[@{moocNumber - 1}].depart_date" value="" type="text"></input>
+                        <i class="input-date-icon glyphicons calendar"></i>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-offset-0 row">
+                <div class="col-sm-12 form-group">
+                    <label for="ret_location"> Наименование курса</label>
+                    <input class="form-control input-lg" type="text" id="course" name="course" value="" placeholder="Наименование курса">
+                </div>
+            </div>
+
+            <div class="col-md-offset-0 row">
+                <div class="col-sm-12 form-group">
+                    <label for="ret_location"> Наименование образовательного заведения</label>
+                    <input class="form-control input-lg" type="text" id="name" name="name" value="" placeholder="Наименование образовательного заведения">
+                </div>
+            </div>
+
+            <div class="col-md-offset-0 row">
+                <div class="col-sm-12 form-group">
+                    <label for="ret_location"> Полученная квалификация</label>
+                    <input class="form-control input-lg" type="text" id="name" name="name" value="" placeholder="Полученная квалификация">
+                </div>
+            </div>
+
+            <div class="col-md-offset-0 row">
+                <div class="col-sm-12 form-group">
+                    <label for="ret_location"> Сертификат (укажите, если был выдан)</label>
+                    <input class="form-control input-lg" type="text" id="name" name="name" value="" placeholder="Сертификат (укажите, если был выдан)">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<hr/>
