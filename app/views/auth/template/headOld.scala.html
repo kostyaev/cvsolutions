@@ -1,0 +1,54 @@
+@()
+
+<div id="login" class="collapse">
+    <div class="container">
+        <div class="top-form-inner">
+            <form class="form-inline" role="form" action="/authenticate/userpass">
+                <div class="form-group">
+                    <label class="sr-only" for="email">Email address</label>
+                    <input type="email" name="username" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<nav class="navbar  navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/images/AutoMarket - Browse Listings - Grid View.html"><span class="glyphicon glyphicon-chevron-up"></span> flattern<span class="sec-brand">.org</span></a>
+        </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <form class="navbar-form navbar-left" role="search">
+                <div class="form-group">
+                    <input type="text" class="form-control input-sm" placeholder="Search...">
+                </div>
+            </form>
+
+            <p class="navbar-text pull-right">
+                Already a user? <a data-toggle="collapse" data-target="#login" class="navbar-link">Login</a>
+            </p>
+
+            <div class="btn-toolbar pull-right">
+                <div class="btn-group"><a href="/signup" target="_self" class="btn btn-success navbar-btn btn-sm"><span class="glyphicon glyphicon-user"></span>
+                    Create an account</a>
+                </div>
+            </div>
+        </div>
+            <!-- /.navbar-collapse -->
+    </div>
+        <!-- /.container -->
+</nav>

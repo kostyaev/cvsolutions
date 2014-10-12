@@ -1,8 +1,8 @@
-@(plan:Option[ItineraryPlan] = None, planNumber:Int = 0, open:Boolean = true, hidden:Boolean = true)
+@(planNumber:Int = 0, open:Boolean = true, hidden:Boolean = true)
 
 <div class="plan @if(hidden){ temp-hide }" data-number="@{planNumber+1}">
 
-	<input type="hidden" name="itinerary_plans[@planNumber].itinerary_plan_id" value="@plan.map(_.id)">
+	<input type="hidden" name="itinerary_plans[@planNumber].itinerary_plan_id" value="">
 	<input type="hidden" name="itinerary_plans[@planNumber].itinerary_plan_number" value="@planNumber">
 
     <div class="accordion-toggle @if(open){ open }else{ collapsed }  " data-toggle="collapse">Plan #<span class="plan-number-id">@{planNumber+1}</span></div>
@@ -10,14 +10,6 @@
     <div class="accordion-collapse collapse @if(open){ in } ">
 
         <div class="trips ">
-
-            @plan.map{ p =>
-                @for( (tripInstance, index) <- p.tripPlans.zipWithIndex){
-					 @trip(trip = Some(tripInstance), planNumber = planNumber, tripNumber = index, hidden = false)
-                }
-            }.getOrElse{
-                @trip( planNumber = planNumber, hidden = false)
-            }
 
         </div>
 
@@ -27,7 +19,7 @@
 
     <div class="row">
         <div class="col-sm-12 form-group centralize">
-            <div class="btn btn-grove-one btn-lg add-response-trip-action" data-parent=".plan" data-target=".trips" data-url="@routes.TravelPlanner.responseTrip"><i class="glyphicons plus"></i> Add another trip </div>
+            <div class="btn btn-grove-one btn-lg add-response-trip-action" data-parent=".plan" data-target=".trips" data-url="#"><i class="glyphicons plus"></i> Add another trip </div>
         </div>
     </div>
 

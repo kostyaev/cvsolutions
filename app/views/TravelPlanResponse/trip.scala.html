@@ -1,8 +1,8 @@
-@(trip:Option[Trip_Plan] = None, planNumber:Int, tripNumber:Int = 0, open:Boolean = true, hidden:Boolean = true)
+@(planNumber:Int, tripNumber:Int = 0, open:Boolean = true, hidden:Boolean = true)
 
 <div class="trip @if(hidden){ temp-hide }" data-number="@{tripNumber+1}">
 
-	<input type="hidden" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].trip_plan_id" value="@trip.map(_.id)">
+	<input type="hidden" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].trip_plan_id" value="">
 	<input type="hidden" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].trip_plan_number" value="@tripNumber">
 
     <div class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Trip #<span class="trip-number-id">@{tripNumber+1}</span></div>
@@ -11,20 +11,11 @@
 
         <div class="col-md-offset-1 col-md-11 flights">
 
-           @trip.map{ t =>
-
-               @for( (flightInstance,index) <- t.flights.zipWithIndex){
-                   @flight(flight = Some(flightInstance), planNumber = planNumber, tripNumber = tripNumber, flightNumber = index, hidden = false)
-               }
-           }.getOrElse{
-                @flight(planNumber = planNumber, tripNumber = tripNumber, hidden = false )
-           }
-
         </div>
 
         <div class="row">
             <div class="col-md-12 form-group centralize">
-                <div class="btn btn-grove-one btn-lg add-flight-action" data-parent=".trip" data-target=".flights" data-url="@routes.TravelPlanner.flightView"><i class="glyphicons plus"></i> Add another flight </div>
+                <div class="btn btn-grove-one btn-lg add-flight-action" data-parent=".trip" data-target=".flights" data-url="#"><i class="glyphicons plus"></i> Add another flight </div>
             </div>
         </div>
 
@@ -37,22 +28,22 @@
             <div class="col-md-4 form-group">
 
                 <label class="radio">
-                    <input @if(trip.exists(_.rental)){checked}  class="additional-transportation rental display-trigger" type="radio" value="rental" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation" data-display-trip-form=".form-group.preferred-rental-company" >
+                    <input checked  class="additional-transportation rental display-trigger" type="radio" value="rental" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation" data-display-trip-form=".form-group.preferred-rental-company" >
                     Rental
                 </label>
 
                 <label class="radio">
-                    <input @if(trip.exists(_.taxi)){checked} class="additional-transportation taxi" type="radio" value="taxi" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation">
+                    <input checked class="additional-transportation taxi" type="radio" value="taxi" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation">
                     Taxi
                 </label>
 
                 <label class="radio">
-                    <input @if(trip.exists(_.shuttle)){checked}  class="additional-transportation shuttle" type="radio" value="shuttle"  name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation" >
+                    <input checked  class="additional-transportation shuttle" type="radio" value="shuttle"  name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation" >
                     Shuttle
                 </label>
 
                 <label class="radio">
-                    <input @if(trip.exists(_.isThereAdditionalTransportation)){checked}  class="additional-transportation none" type="radio" value="none" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation" checked>
+                    <input checked class="additional-transportation none" type="radio" value="none" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].additional_transportation" checked>
                     No, thanks.
                 </label>
 
@@ -66,22 +57,22 @@
 
             <div class="col-md-12 form-group">
                 <label for="hotel_name"> Name </label>
-                <input class="form-control input-lg" type="text" id="hotel_name" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_name" value="@trip.map(_.hotel_name) " placeholder="">
+                <input class="form-control input-lg" type="text" id="hotel_name" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_name" value=" " placeholder="">
             </div>
 
             <div class="col-md-12 form-group">
                 <label for="hotel_confirm_number"> Confirmation Number </label>
-                <input class="form-control input-lg" type="text" id="hotel_confirm_number" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_confirm" value="@trip.map(_.hotel_confirm)" placeholder="">
+                <input class="form-control input-lg" type="text" id="hotel_confirm_number" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_confirm" value="" placeholder="">
             </div>
 
             <div class="col-md-12 form-group">
                 <label for="hotel_address"> Address </label>
-                <input class="form-control input-lg" type="text" id="hotel_address" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_address" value="@trip.map(_.hotel_address)" placeholder="">
+                <input class="form-control input-lg" type="text" id="hotel_address" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_address" value="" placeholder="">
             </div>
 
             <div class="col-md-12 form-group">
                 <label for="hotel_phone"> Phone Number </label>
-                <input class="form-control input-lg" type="text" id="hotel_phone" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_phone" value="@trip.map(_.hotel_phone)" placeholder="">
+                <input class="form-control input-lg" type="text" id="hotel_phone" name="itinerary_plans[@planNumber].trip_plans[@tripNumber].hotel_phone" value="" placeholder="">
             </div>
 
         </div>
