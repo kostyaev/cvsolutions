@@ -2,21 +2,12 @@ package controllers
 
 import org.squeryl.PrimitiveTypeMode
 import play.api.mvc._
-import play.api.mvc._
 import play.api.i18n.Messages
 import play.api.libs.json.Json
-import play.api.http.HeaderNames
-import scala.concurrent.{ ExecutionContext, Future }
-import play.api.templates.Html
-
 import scala.Some
-import play.api.mvc.SimpleResult
-
-
-import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.Future
 import securesocial.core._
 import securesocial.core.providers.utils.RoutesHelper
-import play.api.mvc.SimpleResult
 import play.api.Logger
 import securesocial.core.SecuredRequest
 import play.api.mvc.SimpleResult
