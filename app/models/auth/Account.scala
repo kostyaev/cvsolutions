@@ -36,12 +36,6 @@ case class Account( id: Long,
     Database.accountToOAuth2Info.left(this)
   lazy val passwordCredentialSets: OneToMany[PasswordCredentialSet] =
     Database.accountToPasswordInfo.left(this)
- /* lazy val userSets: OneToMany[User] =
-    Database.accountToUser.left(this)*/
-
-  /*
-   * SecureSocial Identity trait implementation
-   */
 
   def authMethod: AuthenticationMethod = AuthenticationMethod(auth_method)
 
@@ -67,13 +61,6 @@ case class Account( id: Long,
       case None => None
     }
   }
-
-  /*def user: Option[User] = inTransaction {
-    userSets headOption match {
-      case None => None
-      case user => user
-    }
-  }*/
 
   def identityId: securesocial.core.IdentityId = securesocial.core.IdentityId(userId, providerId)
 }
