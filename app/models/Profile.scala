@@ -11,7 +11,7 @@ case class Profile(id: Long,
                  @Column("account_id")
                  accountId: Long,
                  fullname: String,
-                 birthdate: DateTime,
+                 birthday: DateTime,
                  email: String,
                  city: String,
                  phone: String,

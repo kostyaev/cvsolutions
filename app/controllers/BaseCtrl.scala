@@ -1,16 +1,14 @@
 package controllers
 
 import org.squeryl.PrimitiveTypeMode
-import play.api.mvc._
+import play.api.Logger
 import play.api.i18n.Messages
 import play.api.libs.json.Json
-import scala.Some
-import scala.concurrent.Future
+import play.api.mvc._
 import securesocial.core._
 import securesocial.core.providers.utils.RoutesHelper
-import play.api.Logger
-import securesocial.core.SecuredRequest
-import play.api.mvc.SimpleResult
+
+import scala.concurrent.Future
 
 trait BaseCtrl extends Controller with PrimitiveTypeMode with SecureSocial {
   private def ajaxCallNotAuthenticated[A](implicit request: Request[A]): SimpleResult = {

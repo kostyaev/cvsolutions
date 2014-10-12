@@ -1,11 +1,12 @@
 package controllers
 
-import com.typesafe.plugin.Secured
 import play.api.Logger
 import play.api.mvc._
 import controllers.Forms._
+import service.SquerylEntryPoint
+import SquerylEntryPoint._
 
-object Resume extends Controller with Secured {
+object Resume extends BaseCtrl {
 
   def createResume = Action {implicit request =>
     Ok( views.html.createResume.create(None))
@@ -57,7 +58,7 @@ object Resume extends Controller with Secured {
 
   // Persistent
 
-  def saveResume = Action {implicit request =>
+  def saveResume = DBAction {implicit request =>
     Ok( views.html.createResume.create(None))
   }
 
