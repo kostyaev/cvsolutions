@@ -1,6 +1,9 @@
 package controllers
 
 import play.api.mvc._
+import service._
+import dao._
+import SquerylEntryPoint._
 
 object Application extends Controller {
 
@@ -13,6 +16,9 @@ object Application extends Controller {
   }
 
   def faq = Action { implicit request =>
+  transaction {
+    println(AccountDao.findByEmailSocialProvider("daunnc@gmail.com", "userpass"))
+  }
     Ok(views.html.faq())
   }
 
