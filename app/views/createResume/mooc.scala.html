@@ -1,4 +1,4 @@
-@(moocRequest:Option[Trip_Request] = None, moocNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
+@(moocRequest:Option[Mooc] = None, moocNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
 
 <div class="mooc @if(hidden){ temp-hide }" data-number="@moocNumber">
     <div href="#mooc@moocNumber" class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Тренинг № <span class="mooc-number-id">@moocNumber</span></div>

@@ -1,4 +1,4 @@
-@(jobRequest:Option[Trip_Request] = None, jobNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
+@(jobRequest:Option[Job] = None, jobNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
 
 <div class="job @if(hidden){ temp-hide }" data-number="@jobNumber">
     <div href="#job@jobNumber" class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Место работы № <span class="job-number-id">@jobNumber</span></div>
