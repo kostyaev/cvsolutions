@@ -16,6 +16,7 @@ class AccountService(application: Application) extends UserServicePlugin(applica
   // would do an "upsert" operation by checking whether the user exists first
   def save(ssUser: Identity): Identity = AccountDao.fromIdentity(ssUser)
 
+
   def findByEmailAndProvider(email: String, providerId: String) = {
     AccountDao.findByEmailSocialProvider(email, providerId)
   }
