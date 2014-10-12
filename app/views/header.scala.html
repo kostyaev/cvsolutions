@@ -1,4 +1,4 @@
-@(pageTitle: String)(implicit user:Option[User])
+@(pageTitle: String)
 <header>
     <nav class='navbar navbar-default grove-navbar' role='navigation'>
          <div class='container'>
@@ -18,11 +18,11 @@
                             <li><a href="@routes.Application.faq()">FAQ</a></li>
 						</ul>
                      <li class='inactive'> <a href="@routes.Application.dashboard()">My Travel Plans</a> </li>
-                        @if(user.isDefined){
-							<li class='active'>Logged as @user.get.name (<a class="logout-link" href="@routes.Authentication.logout()"> Logout </a>)</li>
+                        @if(false){ // user logged
+							<li class='active'>Logged as user.get.name (<a class="logout-link" href="#"> Logout </a>)</li>
                         }else{
 		                     <li class='inactive'>
-		                         <a href="@routes.Authentication.login()">Login/Sign Up</a>
+		                         <a href="#">Login/Sign Up</a>
 		                     </li>
                         }
                  </ul>

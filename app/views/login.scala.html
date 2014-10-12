@@ -1,4 +1,4 @@
-@(loginForm: Option[Form[(String,String)]] = None)(userForm: Option[Form[models.User]] = None)(implicit flash: Flash = Flash() )
+@(loginForm: Option[Form[(String,String)]] = None)(implicit flash: Flash = Flash() )
 
 @import views.html.helper._
 
@@ -13,7 +13,7 @@
             Please fill out the text fields below.
         </p>
 
-        @form(routes.Authentication.authenticate) {
+        @form(routes.Application.faq()) {
 
         <form action="#"  method="get" >
             <div class="row">
@@ -65,23 +65,16 @@
             Please fill out the text fields below.
         </p>
 
-        @form(routes.Authentication.register) {
+        @form(routes.Application.faq()) {
 
         <form action="#"  method="get" >
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
 
-                    @userForm.map{ form =>
+
                         <div class="alert bg-danger">
                             <a class="close" data-dismiss="alert">x</a>
-                            @form.error("name").map{ error => <p>Please enter your name</p> }
-                            @form.error("password").map{ error => <p>Password must contain at least 8 characters</p>  }
-                            @form.error("phone").map{ error => <p>Phone must contain 10 digits</p>  }
-                            @form.error("email").map{ error => <p>Please enter your email</p>  }
                          </div>
-
-                        @form.globalError.map { error => _.message }
-                    }
 
                     @flash.get("success").map { message =>
                         <div class="alert bg-info">

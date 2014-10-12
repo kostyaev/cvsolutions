@@ -1,9 +1,7 @@
-@(message: String, users:List[User])
+@(message: String)
 
 @main("Welcome to Play") {
 
     @message
-    @users.map{ user =>
-        @user.name
-    }
+
 }

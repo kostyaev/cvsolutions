@@ -16,13 +16,10 @@ libraryDependencies ++= Seq(
     anorm,
     cache,
     "postgresql" % "postgresql" % "9.1-901-1.jdbc4",
-    "net.fwbrasil" %% "activate-play" % activateVersion,
-    "net.fwbrasil" %% "activate-jdbc" % activateVersion,
-    "net.fwbrasil" %% "activate-core" % activateVersion,
-    //"com.typesafe.play" %% "play" % playVersion % "provided",
-    "com.typesafe" %% "play-plugins-mailer" % "2.2.0"
+    "com.typesafe" %% "play-plugins-mailer" % "2.2.0",
+    "ws.securesocial" %% "securesocial" % "2.1.3",
+    "org.squeryl" %% "squeryl" % "0.9.6-RC3"
 )
-
 
 val appDependencies = Seq(
   "postgresql" % "postgresql" % "9.1-901-1.jdbc4"

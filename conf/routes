@@ -3,57 +3,50 @@
 # ~~~~
 
 # Home page
-GET         /                          controllers.Application.landingPage()
+GET         /                              controllers.Application.landingPage()
 
 # About Us Page
-GET         /aboutus                  controllers.Application.aboutus()
-POST       /sendMessage              controllers.Mailer.sendMessage
+GET         /aboutus                       controllers.Application.aboutus()
+POST        /sendMessage                   controllers.Mailer.sendMessage
 
 # FAQ Page
-GET         /faq                        controllers.Application.faq()
+GET         /faq                           controllers.Application.faq()
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file              controllers.Assets.at(path="/public", file)
+GET         /assets/*file                  controllers.Assets.at(path="/public", file)
 
 
 # Budget order forms
-GET         /travelplanner             controllers.Application.travelPlanner(id:Option[String] ?= None)
-GET         /removeplan                controllers.Application.removePlan(id:Option[String] ?= None)
+GET         /travelplanner                 controllers.Application.travelPlanner(id:Option[String] ?= None)
+GET         /removeplan                    controllers.Application.removePlan(id:Option[String] ?= None)
 
 # Budget order forms
-GET         /dashboard                 controllers.Application.dashboard
+GET         /dashboard                     controllers.Application.dashboard
 
 # Admin Response Form to a client request
-GET         /travelplanresponse        controllers.Application.travelResponse(id:Option[String] ?= None)
-GET         /seeresponse               controllers.Application.seeResponse(id:Option[String] ?= None)
+GET         /travelplanresponse            controllers.Application.travelResponse(id:Option[String] ?= None)
+GET         /seeresponse                   controllers.Application.seeResponse(id:Option[String] ?= None)
 
-#Request Trip view (Slice)
-POST        /tripView                  controllers.TravelPlanner.tripView
-
-#Request Flight view (Slice)
-POST        /flightView                controllers.TravelPlanner.flightView
-
-#Request Response trip view (Slice)
-POST        /responseTripView          controllers.TravelPlanner.responseTrip
-
-#Request Response plan view (Slice)
-POST        /responsePlanView          controllers.TravelPlanner.responsePlanView
-POST        /submitItinerary           controllers.TravelPlanner.submitItinerary
-
-#Request trip
-POST        /sendRequest               controllers.TravelPlanner.sendRequest
-POST        /dashboard                 controllers.Application.dashboard
-
-# Login and Register Page
-GET         /login                     controllers.Authentication.login()
-POST        /login                     controllers.Authentication.authenticate()
-POST        /register                  controllers.Authentication.register()
-
-# Logout Page
-GET         /logout                    controllers.Authentication.logout()
+POST        /dashboard                     controllers.Application.dashboard
 
 #Favicon
 #GET     /favicon.ico                controllers.Assets.at(path="/public/images", file="favicon.png")
 
+# Secure social
+GET         /login                         securesocial.controllers.LoginPage.login
+GET         /logout                        securesocial.controllers.LoginPage.logout
 
+GET         /signup                        securesocial.controllers.Registration.startSignUp
+POST        /signup                        securesocial.controllers.Registration.handleStartSignUp
+GET         /signup/:token                 securesocial.controllers.Registration.signUp(token)
+POST        /signup/:token                 securesocial.controllers.Registration.handleSignUp(token)
+GET         /reset                         securesocial.controllers.Registration.startResetPassword
+POST        /reset                         securesocial.controllers.Registration.handleStartResetPassword
+GET         /reset/:token                  securesocial.controllers.Registration.resetPassword(token)
+POST        /reset/:token                  securesocial.controllers.Registration.handleResetPassword(token)
+GET         /password                      securesocial.controllers.PasswordChange.page
+POST        /password                      securesocial.controllers.PasswordChange.handlePasswordChange
 
+GET         /authenticate/:provider        securesocial.controllers.ProviderController.authenticate(provider)
+POST        /authenticate/:provider        securesocial.controllers.ProviderController.authenticateByPost(provider)
+GET         /not-authorized                securesocial.controllers.ProviderController.notAuthorized

@@ -1,24 +1,23 @@
-@(clientRequest:Client_Request)(implicit user:Option[User])
+@()
 @import views.html.helper._
 @main(pageTitle = "Travel Planner") {
 
-    <div class="widewrapper @if(user.isDefined && !user.get.isAdmin ){readonly-state}" >
+    <div class="widewrapper " >
         <div class="container content">
             <div class="row">
 
                 <section class="col-md-8 faq">
-                    <h2> Travel plan for @clientRequest.user_id.name on @clientRequest.creationDate.format("MM/dd/yyyy")</h2>
+                    <h2> Travel plan for clientRequest.user_id.name on clientRequest.creationDate.format("MM/dd/yyyy")</h2>
 
-                    @form(routes.TravelPlanner.submitItinerary) {
+                    @form(routes.Application.faq()) {
 
-                        <input type="hidden" name="request_id" value="@clientRequest.id">
+                        <input type="hidden" name="request_id" value="">
 
-                        @travelPlan(clientRequest)
 
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="message"> Comments </label>
-                                <textarea class="form-control " id="message" name="comments" rows="5">@clientRequest.itinerary.comments</textarea>
+                                <textarea class="form-control " id="message" name="comments" rows="5">clientRequest.itinerary.comments</textarea>
                             </div>
                         </div>
 

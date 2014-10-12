@@ -30,7 +30,6 @@ object Mailer extends Controller {
         InternalServerError,
       contactUsForm =>
       {
-        implicit val user = Application.onlineUser(request)
 
         try {
           sendEmail(subject = "New Message for CET Services",
