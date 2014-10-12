@@ -4,14 +4,15 @@
 
 # Home page
 
-# GET         /createResume              controllers.Resume.createResume
+GET         /createResume              controllers.Resume.createResume
 
 #Request Trip view (Slice)
-# POST        /collegeView               controllers.Resume.collegeView
-# POST        /moocView                  controllers.Resume.moocView
-# POST        /jobView                   controllers.Resume.jobView
-# POST        /languageView              controllers.Resume.languageView
+POST        /collegeView               controllers.Resume.collegeView
+POST        /moocView                  controllers.Resume.moocView
+POST        /jobView                   controllers.Resume.jobView
+POST        /languageView              controllers.Resume.languageView
 
+POST        /saveResume                    controllers.Resume.saveResume
 
 GET         /                              controllers.Application.landingPage()
 

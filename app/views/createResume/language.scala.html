@@ -1,4 +1,4 @@
-@(languageRequest:Option[Trip_Request] = None, languageNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
+@(languageRequest:Option[Language] = None, languageNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
 
 <div class="language @if(hidden){ temp-hide }" data-number="@languageNumber">
     <div href="#language@languageNumber" class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Язык № <span class="language-number-id">@languageNumber</span></div>

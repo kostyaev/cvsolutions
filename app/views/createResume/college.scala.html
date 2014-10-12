@@ -1,4 +1,4 @@
-@(collegeRequest:Option[Trip_Request] = None, collegeNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
+@(collegeRequest:Option[College] = None, collegeNumber:Int = 1, open:Boolean = true, hidden:Boolean = true)
 
 <div class="college @if(hidden){ temp-hide }" data-number="@collegeNumber">
     <div href="#college@collegeNumber" class="accordion-toggle @if(open){ open }else{ collapsed }" data-toggle="collapse">Университет № <span class="college-number-id">@collegeNumber</span></div>

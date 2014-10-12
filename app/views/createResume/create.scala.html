@@ -1,16 +1,16 @@
-@(clientRequest:Option[Client_Request] = None)(implicit user:Option[User])
+@(profile: Option[models.dto.ProfileDto])
 @import views.html.helper._
 
 @main(pageTitle = "Travel Planner") {
     <div class="widewrapper">
         <div class="container content">
             <div class="row">
-                @form(routes.TravelPlanner.sendRequest) {
-                    <input type="hidden" name="request_id" value="@clientRequest.map(_.id)"/>
+                @form(routes.Resume.saveResume) {
+                    <input type="hidden" name="resume_id" value="@profile.map(_.id)"/>
 
                     <section class="personal-section col-md-8 faq">
                         <h2> Личная информация </h2>
-                        @personal(clientRequest)
+                        @personal(profile)
                     </section>
 
                     @views.html.RightSidebar.contactInfo()
@@ -20,11 +20,11 @@
                         <h2> Образование </h2>
 
                         <div class="colleges units">
-                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                        @if(!profile.isDefined || profile.get.colleges.isEmpty) {
                             @college(hidden = false)
                         } else {
-                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
-                                @college(collegeRequest = Some(tripInstance), collegeNumber = index + 1, hidden = false)
+                            @for((item, index) <- profile.get.colleges.zipWithIndex) {
+                                @college(collegeRequest = Some(item), collegeNumber = index + 1, hidden = false)
                             }
                         }
                         </div>
@@ -45,11 +45,11 @@
                         <h2> Дополнительное образование </h2>
 
                         <div class="moocs units">
-                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                        @if(!profile.isDefined || profile.get.moocs.isEmpty) {
                             @mooc(hidden = false)
                         } else {
-                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
-                                @mooc(moocRequest = Some(tripInstance), moocNumber = index + 1, hidden = false)
+                            @for((item, index) <- profile.get.moocs.zipWithIndex) {
+                                @mooc(moocRequest = Some(item), moocNumber = index + 1, hidden = false)
                             }
                         }
                         </div>
@@ -68,11 +68,11 @@
                         <h2> Работа </h2>
 
                         <div class="jobs units">
-                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                        @if(!profile.isDefined || profile.get.jobs.isEmpty) {
                             @job(hidden = false)
                         } else {
-                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
-                                @job(jobRequest = Some(tripInstance), jobNumber = index + 1, hidden = false)
+                            @for((item, index) <- profile.get.jobs.zipWithIndex) {
+                                @job(jobRequest = Some(item), jobNumber = index + 1, hidden = false)
                             }
                         }
                         </div>
@@ -91,11 +91,11 @@
                         <h2> Языки </h2>
 
                         <div class="languages units">
-                        @if(!clientRequest.isDefined || clientRequest.get.trips.isEmpty) {
+                        @if(!profile.isDefined || profile.get.languages.isEmpty) {
                             @language(hidden = false)
                         } else {
-                            @for((tripInstance, index) <- clientRequest.get.trips.zipWithIndex) {
-                                @language(languageRequest = Some(tripInstance), languageNumber = index + 1, hidden = false)
+                            @for((item, index) <- profile.get.languages.zipWithIndex) {
+                                @language(languageRequest = Some(item), languageNumber = index + 1, hidden = false)
                             }
                         }
                         </div>
