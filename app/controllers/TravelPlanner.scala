@@ -26,10 +26,8 @@ object TravelPlanner extends Controller with Secured
   {
     implicit request =>
       tripViewForm.bindFromRequest.fold(
-
         formWithErrors =>
           InternalServerError,
-
         tripNumber =>
         {
           transactional{

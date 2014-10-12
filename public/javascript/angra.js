@@ -74,6 +74,22 @@ $(function()
         return $('.trip').last().data('number');
     }
 
+
+    function mostRecentCollegeNumber()
+    {
+        return $('.college').last().data('number');
+    }
+
+    function mostRecentMoocNumber()
+    {
+        return $('.mooc').last().data('number');
+    }
+
+    function mostRecentJobNumber()
+    {
+        return $('.job').last().data('number');
+    }
+
     bindBindInputsAhead($(document.body));
 
 
@@ -115,7 +131,7 @@ $(function()
             //$(data).hide().appendTo(trips).show('slow');
             trips.append( data );
 
-            var aTrip =   trips.find(".trip[data-number="+tripNumber+"]");
+            var aTrip = trips.find(".trip[data-number="+tripNumber+"]");
 
             aTrip.show('slow');
 
@@ -124,6 +140,108 @@ $(function()
         });
 
     });
+
+    $(document.body).on("click",".add-college-action", function(e)
+    {
+        e.stopImmediatePropagation();
+
+        var actionTrigger = $(this);
+        var url = actionTrigger.data('url');
+        var collegeNumber =  mostRecentCollegeNumber() + 1;
+        var parent = actionTrigger.closest('.colleges-section');
+        var trips = parent.find('.colleges');
+
+        $.post( url, {unitNumber: collegeNumber},
+            function( data )
+            {
+                //$(data).hide().appendTo(trips).show('slow');
+                trips.append( data );
+
+                var aCollege = trips.find(".college[data-number="+collegeNumber+"]");
+
+                aCollege.show('slow');
+
+                bindBindInputsAhead( aCollege );
+                rebindFields();
+            });
+    });
+
+
+    $(document.body).on("click",".add-mooc-action", function(e)
+    {
+        e.stopImmediatePropagation();
+
+        var actionTrigger = $(this);
+        var url = actionTrigger.data('url');
+        var moocNumber =  mostRecentMoocNumber() + 1;
+        var parent = actionTrigger.closest('.moocs-section');
+        var moocs = parent.find('.moocs');
+
+        $.post( url, {unitNumber: moocNumber},
+            function( data )
+            {
+                //$(data).hide().appendTo(trips).show('slow');
+                moocs.append( data );
+
+                var aMooc = moocs.find(".mooc[data-number="+moocNumber+"]");
+
+                aMooc.show('slow');
+
+                bindBindInputsAhead( aMooc );
+                rebindFields();
+            });
+    });
+
+    $(document.body).on("click",".add-job-action", function(e)
+    {
+        e.stopImmediatePropagation();
+
+        var actionTrigger = $(this);
+        var url = actionTrigger.data('url');
+        var jobNumber =  mostRecentJobNumber() + 1;
+        var parent = actionTrigger.closest('.jobs-section');
+        var jobs = parent.find('.jobs');
+
+        $.post( url, {unitNumber: jobNumber},
+            function( data )
+            {
+                //$(data).hide().appendTo(trips).show('slow');
+                jobs.append( data );
+
+                var aJob = jobs.find(".job[data-number="+jobNumber+"]");
+
+                aJob.show('slow');
+
+                bindBindInputsAhead( aJob );
+                rebindFields();
+            });
+    });
+
+    $(document.body).on("click",".add-language-action", function(e)
+    {
+        e.stopImmediatePropagation();
+
+        var actionTrigger = $(this);
+        var url = actionTrigger.data('url');
+        var languageNumber =  mostRecentJobNumber() + 1;
+        var parent = actionTrigger.closest('.languages-section');
+        var languages = parent.find('.languages');
+
+        $.post( url, {unitNumber: languageNumber},
+            function( data )
+            {
+                //$(data).hide().appendTo(trips).show('slow');
+                languages.append( data );
+
+                var aLanguage = languages.find(".language[data-number="+languageNumber+"]");
+
+                aLanguage.show('slow');
+
+                bindBindInputsAhead( aLanguage );
+                rebindFields();
+            });
+    });
+
 
 
     $(document.body).on("click",".add-flight-action", function(e)
