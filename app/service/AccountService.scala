@@ -7,7 +7,6 @@ import service.dao._
 import models.auth._
 import scala.language.reflectiveCalls
 
-
 class AccountService(application: Application) extends UserServicePlugin(application) {
 
   def find(id: IdentityId) = AccountDao.findByIdentityId(id)

@@ -1577,6 +1577,7 @@ ul.paging li.active a {
 }
 .login {
     padding-top: 60px;
+    padding-bottom: 60px;
     text-align: center;
 }
 .login .login-icons {
@@ -2048,4 +2049,17 @@ input[type=search]
     outline: none;
     cursor: default;
     -webkit-box-shadow: none;
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+}
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
 }
