@@ -19,6 +19,7 @@ object Database extends Schema {
   val jobTable  = table[Job]("job")
   val moocTable  = table[Mooc]("mooc")
   val languageTable  = table[Language]("language")
+  val resumeTable  = table[Resume]("resume")
 
 
   val accountToOAuth1Info = oneToManyRelation(accountTable, oauth1InfoTable).
@@ -31,17 +32,20 @@ object Database extends Schema {
   val accountToProfile = oneToManyRelation(accountTable, profileTable).
     via((account, profile) => profile.accountId === account.id)
 
-
   val profileToCollege = oneToManyRelation(profileTable, collegeTable).
     via((profile, college) => profile.id === college.profileId)
 
   val profileToJob = oneToManyRelation(profileTable, jobTable).
     via((profile, job) => profile.id === job.profileId)
 
-
   val profileToMooc = oneToManyRelation(profileTable, moocTable).
     via((profile, mooc) => profile.id === mooc.profileId)
 
   val profileToLanguage = oneToManyRelation(profileTable, languageTable).
     via((profile, language) => profile.id === language.profileId)
+
+  val accountToResume = oneToManyRelation(accountTable, resumeTable).
+    via((account, resume) => resume.accountId === account.id)
+
+
 }

@@ -1,16 +1,12 @@
 package models.auth
 
-import service._
-import SquerylEntryPoint._
+import models.Resume
 import org.squeryl.KeyedEntity
-import org.squeryl.dsl._
-import securesocial.core.{AuthenticationMethod}
-import securesocial.core.{OAuth1Info, OAuth2Info, PasswordInfo}
 import org.squeryl.annotations._
-import securesocial.core.OAuth2Info
-import securesocial.core.OAuth1Info
-import securesocial.core.PasswordInfo
-import scala.Some
+import org.squeryl.dsl._
+import securesocial.core.{AuthenticationMethod, OAuth1Info, OAuth2Info, PasswordInfo}
+import service.SquerylEntryPoint._
+import service._
 
 case class Account( id: Long,
                     @Column("user_id")
@@ -36,6 +32,10 @@ case class Account( id: Long,
     Database.accountToOAuth2Info.left(this)
   lazy val passwordCredentialSets: OneToMany[PasswordCredentialSet] =
     Database.accountToPasswordInfo.left(this)
+
+  lazy val resumes: List[Resume] =
+    Database.accountToResume.left(this).toList
+
 
   def authMethod: AuthenticationMethod = AuthenticationMethod(auth_method)
 
@@ -63,4 +63,6 @@ case class Account( id: Long,
   }
 
   def identityId: securesocial.core.IdentityId = securesocial.core.IdentityId(userId, providerId)
+
+
 }

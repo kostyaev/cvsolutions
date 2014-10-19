@@ -50,9 +50,7 @@ trait BaseCtrl extends Controller with PrimitiveTypeMode with SecureSocial {
         } else {
           Future.successful {
             if ( ajaxCall ) {
-              transaction {
                 ajaxCallNotAuthorized(request)
-              }
             } else {
               Redirect(RoutesHelper.notAuthorized.absoluteURL(IdentityProvider.sslEnabled))
             }

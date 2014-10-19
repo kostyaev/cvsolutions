@@ -1,12 +1,15 @@
 package beans
 
-import models.Profile
+import models.auth.Account
+import models.{Resume, Profile}
 import models.dto.ProfileDto
-import service.SquerylEntryPoint
-import service.dao.{LanguageDao, JobDao, MoocDao, CollegeDao}
-import SquerylEntryPoint._
+import securesocial.core.SecuredRequest
+import service.SquerylEntryPoint._
+import service.dao._
 
 object UserBean {
+
+  def findByIdentityId[T](implicit request: SecuredRequest[T]): Account = AccountDao.findByIdentityId
 
   def saveProfileDto(profileDto: ProfileDto) = {
     profileDto.colleges.foreach(college => CollegeDao.save(college))
@@ -28,5 +31,7 @@ object UserBean {
       publications = profileDto.publications,
       license = profileDto.license.toArray)
   }
+
+  def saveResume(resume: Resume): Resume = ResumeDao.save(resume)
 
 }

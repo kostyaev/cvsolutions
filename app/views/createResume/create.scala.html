@@ -5,173 +5,46 @@
     <div class="widewrapper">
         <div class="container content">
             <div class="row">
-                @form(routes.Resume.saveResume) {
-                    <input type="hidden" name="resume_id" value="@profile.map(_.id)"/>
+                @form(routes.ResumeCtrl.upload, 'enctype -> "multipart/form-data") {
+                    <input type="hidden" name="id" value="0"/>
+                    <input type="hidden" name="accountId" value="1"/>
 
                     <section class="personal-section col-md-8 faq">
                         <h2> Личная информация </h2>
-                        @personal(profile)
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="ret_location"> ФИО</label>
+                                <input class="form-control input-lg" type="text" id="name" name="name" value="@profile.map(_.fullname)" placeholder="ФИО">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="ret_location"> Телефон</label>
+                                <input class="form-control input-lg" type="text" id="phone" name="phone" value="@profile.map(_.phone)" placeholder="Телефон">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="ret_location"> Email</label>
+                                <input class="form-control input-lg" type="text" id="email" name="email" value="@profile.map(_.email)" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <label for="ret_location"> Ваше резюме: </label>
+                                <input title="Загрузить резюме" type="file" name="file" data-filename-placement="inside">
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-grove-one btn-xlg btn-bold pull-right"> Сохранить </button>
+
                     </section>
 
                     @views.html.RightSidebar.contactInfo()
-
-
-                    <section class="colleges-section col-md-8 faq">
-                        <h2> Образование </h2>
-
-                        <div class="colleges units">
-                        @if(!profile.isDefined || profile.get.colleges.isEmpty) {
-                            @college(hidden = false)
-                        } else {
-                            @for((item, index) <- profile.get.colleges.zipWithIndex) {
-                                @college(collegeRequest = Some(item), collegeNumber = index + 1, hidden = false)
-                            }
-                        }
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group centralize">
-                                <div class="btn btn-grove-one btn-lg add-college-action" data-url="@routes.Resume.collegeView"><i class="glyphicons plus"></i>
-                                    Добавить университет </div>
-                            </div>
-                        </div>
-
-
-
-                    </section>
-
-
-                    <section class="moocs-section col-md-8 faq">
-                        <h2> Дополнительное образование </h2>
-
-                        <div class="moocs units">
-                        @if(!profile.isDefined || profile.get.moocs.isEmpty) {
-                            @mooc(hidden = false)
-                        } else {
-                            @for((item, index) <- profile.get.moocs.zipWithIndex) {
-                                @mooc(moocRequest = Some(item), moocNumber = index + 1, hidden = false)
-                            }
-                        }
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group centralize">
-                                <div class="btn btn-grove-one btn-lg add-mooc-action" data-url="@routes.Resume.moocView"><i class="glyphicons plus"></i>
-                                    Добавить тренинг </div>
-                            </div>
-                        </div>
-
-                    </section>
-
-
-                    <section class="jobs-section col-md-8 faq">
-                        <h2> Работа </h2>
-
-                        <div class="jobs units">
-                        @if(!profile.isDefined || profile.get.jobs.isEmpty) {
-                            @job(hidden = false)
-                        } else {
-                            @for((item, index) <- profile.get.jobs.zipWithIndex) {
-                                @job(jobRequest = Some(item), jobNumber = index + 1, hidden = false)
-                            }
-                        }
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group centralize">
-                                <div class="btn btn-grove-one btn-lg add-job-action" data-url="@routes.Resume.jobView"><i class="glyphicons plus"></i>
-                                    Добавить сведения о работе </div>
-                            </div>
-                        </div>
-
-                    </section>
-
-
-                    <section class="languages-section col-md-8 faq">
-                        <h2> Языки </h2>
-
-                        <div class="languages units">
-                        @if(!profile.isDefined || profile.get.languages.isEmpty) {
-                            @language(hidden = false)
-                        } else {
-                            @for((item, index) <- profile.get.languages.zipWithIndex) {
-                                @language(languageRequest = Some(item), languageNumber = index + 1, hidden = false)
-                            }
-                        }
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group centralize">
-                                <div class="btn btn-grove-one btn-lg add-language-action" data-url="@routes.Resume.languageView"><i class="glyphicons plus"></i>
-                                    Добавить язык </div>
-                            </div>
-                        </div>
-
-                    </section>
-
-
-                    <section class="bottom-section col-md-8 faq">
-                        <h2> Дополнительные сведения </h2>
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="message"> Владение компьютерными программами. Перечислите название и уровень владения </label>
-                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="message"> Публикации, статьи, патенты </label>
-                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="message"> Увлечения и хобби </label>
-                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="message"> Участие в организациях и спортивных секциях </label>
-                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="message"> Прочая информация </label>
-                                <textarea class="form-control " id="message" name="notes" rows="5"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <label for="message"> Наличие водительского удостоверения (укажите категорию) </label>
-                                <label class=" checkbox">
-                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
-                                    Категория "A"
-                                </label>
-                                <label class=" checkbox">
-                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
-                                    Категория "B"
-                                </label>
-                                <label class=" checkbox">
-                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
-                                    Категория "C"
-                                </label>
-                                <label class=" checkbox">
-                                    <input class="book-hotel display-trigger" type="checkbox" name="" data-display-trip-form=".hotel-preferences">
-                                    Категория "D"
-                                </label>
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-grove-one btn-xlg btn-bold pull-right"> Отправить резюме</button>
-                    </section>
 
                 }
 

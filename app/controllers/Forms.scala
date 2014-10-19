@@ -1,7 +1,8 @@
 package controllers
 
+import models._
 import models.dto.ProfileDto
-import models.{College, Job, Language, Mooc}
+import org.joda.time.DateTime
 import play.api.data.Form
 import play.api.data.Forms._
 
@@ -12,6 +13,19 @@ object Forms {
       (number => number)
       // unbinding
       (info => Some(info))
+  )
+
+  val resumeForm = Form(
+    mapping(
+      "id" -> longNumber,
+      "accountId" -> longNumber,
+      "name" -> text,
+      "email" -> text,
+      "phone" -> text,
+      "result" -> optional(longNumber),
+      "status" -> ignored("Не оплачен"),
+      "date"  -> ignored(new DateTime())
+    )(Resume.apply)(Resume.unapply)
   )
 
   val jobMapping =
