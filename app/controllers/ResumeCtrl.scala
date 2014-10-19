@@ -14,7 +14,7 @@ object ResumeCtrl extends BaseCtrl {
 
 
   def createResume = Action {implicit request =>
-    Ok( views.html.createResume.create(None))
+    Ok( views.html.createResume.create())
   }
 
   def upload = DBAction(parse.multipartFormData) {implicit request =>
@@ -49,7 +49,7 @@ object ResumeCtrl extends BaseCtrl {
   // Persistent
 
   def saveResume = DBAction {implicit request =>
-    Ok( views.html.createResume.create(None))
+    Ok( views.html.createResume.create())
   }
 
 
