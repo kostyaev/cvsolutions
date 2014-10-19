@@ -1,4 +1,4 @@
-@(profile: Option[models.dto.ProfileDto])
+@()
 @import views.html.helper._
 
 @main(pageTitle = "Travel Planner") {
@@ -14,21 +14,21 @@
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="ret_location"> ФИО</label>
-                                <input class="form-control input-lg" type="text" id="name" name="name" value="@profile.map(_.fullname)" placeholder="ФИО">
+                                <input class="form-control input-lg" type="text" id="name" name="name" value="" placeholder="ФИО">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="ret_location"> Телефон</label>
-                                <input class="form-control input-lg" type="text" id="phone" name="phone" value="@profile.map(_.phone)" placeholder="Телефон">
+                                <input class="form-control input-lg" type="text" id="phone" name="phone" value="" placeholder="Телефон">
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-12 form-group">
                                 <label for="ret_location"> Email</label>
-                                <input class="form-control input-lg" type="text" id="email" name="email" value="@profile.map(_.email)" placeholder="Email">
+                                <input class="form-control input-lg" type="text" id="email" name="email" value="" placeholder="Email">
                             </div>
                         </div>
 
