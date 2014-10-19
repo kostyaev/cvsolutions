@@ -1,5 +1,5 @@
 @(user: Option[models.auth.Account])
-@import models.auth.Account
+@import views.html.helper._
 @main(pageTitle = "Админ панель") {
 
     @user.map{ currentUser =>
@@ -8,15 +8,32 @@
                 <div class="row">
                     <section class="trips-section col-md-8 with-margin">
 
-                        <div class="row ">
-                            <form action="/resumeSearch" method="post">
-                                <div class="col-md-8">
-                                    <input type="search" class="form-control input-lg search-input" placeholder="ФИО Клиента">
+                        <div class="row">
+                            @form(routes.ResumeCtrl.searchResume) {
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="text" name="name" class="form-control input-lg search-input" placeholder="ФИО Клиента">
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div id="resume-search" class="btn btn-grove-one btn-lg">Поиск резюме <i class="glyphicons search"></i></div></a>
+                                    </div>
                                 </div>
-                                <div class="col-md-2">
-                                    <div id="resume-search" class="btn btn-grove-one btn-lg">Поиск резюме <i class="glyphicons search"></i></div></a>
-                                </div>
-                            </form>
+                                <div class="row second">
+                                    <div class="col-md-4 form-group">
+                                        <label for="status">Статус</label>
+                                        <select name="status" id="status" class="form-control">
+                                            <option></option>
+                                            @for(status <- models.ResumeStatus.getStatuses) {
+                                                <option value="@status._1">@status._2</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="datetime">Дата изменения</label>
+                                        <input id="datetime" type="text" name="datetime" class="form-control input-lg search-input">
+                                    </div>
+                                 </div>
+                            }
                         </div>
 
                         <div class="row with-margin">
@@ -34,7 +51,7 @@
                                 </thead>
                                 <tbody>
 
-                                @for( resume <- currentUser.resumes) {
+                                @for(resume <- currentUser.resumes) {
                                     <tr class="">
                                         <td>@resume.fullname</td>
 

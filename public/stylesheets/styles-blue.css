@@ -2071,3 +2071,18 @@ input[type=search]
     /* inline-block space fix */
     margin-right:-4px;
 }
+
+.row.second {
+    margin-top:10px;
+}
+
+label[for="status"] {
+    margin-right: 5px;
+}
+
+select#status, input#datetime {
+    height: 45px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}

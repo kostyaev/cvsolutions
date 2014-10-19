@@ -9,7 +9,7 @@ GET         /admin/dashboard               controllers.ResumeCtrl.dashboardAdmin
 
 GET         /createResume                  controllers.ResumeCtrl.createResume
 POST        /upload                        controllers.ResumeCtrl.upload
-
+GET         /searchResume                  controllers.ResumeCtrl.searchResume
 
 POST        /saveResume                    controllers.ResumeCtrl.saveResume
 
