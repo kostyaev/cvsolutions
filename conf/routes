@@ -4,22 +4,23 @@
 
 # Home page
 
-GET         /dashboard                 controllers.ResumeCtrl.dashboard
+GET         /dashboard                     controllers.ResumeCtrl.dashboard
+GET         /admin/dashboard               controllers.ResumeCtrl.dashboardAdmin
 
-GET         /createResume              controllers.ResumeCtrl.createResume
-POST        /upload                    controllers.ResumeCtrl.upload
+GET         /createResume                  controllers.ResumeCtrl.createResume
+POST        /upload                        controllers.ResumeCtrl.upload
 
 
-POST        /saveResume                controllers.ResumeCtrl.saveResume
+POST        /saveResume                    controllers.ResumeCtrl.saveResume
 
-GET         /                          controllers.Application.landingPage()
+GET         /                              controllers.Application.landingPage()
 
 # About Us Page
-GET         /aboutus                   controllers.Application.aboutus()
-POST        /sendMessage               controllers.Mailer.sendMessage
+GET         /aboutus                       controllers.Application.aboutus()
+POST        /sendMessage                   controllers.Mailer.sendMessage
 
 # FAQ Page
-GET         /faq                       controllers.Application.faq()
+GET         /faq                           controllers.Application.faq()
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                  controllers.Assets.at(path="/public", file)

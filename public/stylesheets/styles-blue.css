@@ -802,6 +802,14 @@ fieldset[disabled] .btn-grove-three.active {
     font-size: 23px;
     top: -13px;
 }
+
+.btn-lg .glyphicons.search {
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 8px;
+    padding-right: 24px;
+}
+
 .btn-xlg {
     padding: 18px 22px;
     font-size: 15px;

@@ -35,7 +35,8 @@ object Global extends GlobalSettings {
       firstName = "Лев",
       lastName = "Троцкий",
       fullName = "Лев Троцкий",
-      email = Some("daunnc@gmail.com")
+      email = Some("daunnc@gmail.com"),
+      isAdmin = Some(true)
     )
 
     val pcs = PasswordCredentialSet(

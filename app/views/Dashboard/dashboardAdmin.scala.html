@@ -1,0 +1,64 @@
+@(user: Option[models.auth.Account])
+@import models.auth.Account
+@main(pageTitle = "Админ панель") {
+
+    @user.map{ currentUser =>
+        <div class="widewrapper dashboard">
+            <div class="container content">
+                <div class="row">
+                    <section class="trips-section col-md-8 with-margin">
+
+                        <div class="row ">
+                            <form action="/resumeSearch" method="post">
+                                <div class="col-md-8">
+                                    <input type="search" class="form-control input-lg search-input" placeholder="ФИО Клиента">
+                                </div>
+                                <div class="col-md-2">
+                                    <div id="resume-search" class="btn btn-grove-one btn-lg">Поиск резюме <i class="glyphicons search"></i></div></a>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="row with-margin">
+                            <table class="table trips-table">
+                                <caption></caption>
+                                <thead>
+                                    <tr>
+                                        <td>Client</td>
+                                        <td>Файл резюме</td>
+                                        <td>Статус</td>
+                                        <td>Дата изменения</td>
+                                        <td>Действие</td>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                @for( resume <- currentUser.resumes) {
+                                    <tr class="">
+                                        <td>@resume.fullname</td>
+
+                                        <td>@resume.id</td>
+                                        <td>@resume.status</td>
+                                        <td>@resume.date.toLocalDateTime</td>
+                                        <td>
+                                            <a href="#" class="btn btn-grove-one">Удалить</a>
+                                        </td>
+                                    </tr>
+
+                                }
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </section>
+
+                    @views.html.RightSidebar.contactInfo()
+
+                </div>
+            </div>
+        </div>
+    }
+}

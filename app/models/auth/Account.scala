@@ -15,7 +15,7 @@ case class Account( id: Long,
                     @Column("provider_id")
                     providerId: String,
                     @Column("avatar_url")
-                    avatarUrl: Option[String],
+                    avatarUrl: Option[String] = None,
                     @Column("firstname")
                     firstName: String,
                     @Column("lastname")
@@ -23,7 +23,9 @@ case class Account( id: Long,
                     @Column("fullname")
                     fullName: String,
                     @Column("email_address")
-                    email: Option[String]
+                    email: Option[String] = None,
+                    @Column("is_admin")
+                    isAdmin: Option[Boolean] = None
 ) extends securesocial.core.Identity with KeyedEntity[Long] {
 
   lazy val oauth1CredentialSets: OneToMany[OAuth1CredentialSet] =
@@ -63,6 +65,4 @@ case class Account( id: Long,
   }
 
   def identityId: securesocial.core.IdentityId = securesocial.core.IdentityId(userId, providerId)
-
-
 }

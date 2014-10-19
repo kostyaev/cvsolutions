@@ -8,10 +8,12 @@ import Forms._
 object ResumeCtrl extends BaseCtrl {
 
   def dashboard = SecuredDBAction {implicit request =>
-
-    Ok( views.html.dashboard.dashboard(Some(UserBean.findByIdentityId)) )
+    Ok( views.html.Dashboard.dashboard(Some(UserBean.findByIdentityId)) )
   }
 
+  def dashboardAdmin = SecuredDBAction {implicit request =>
+    Ok( views.html.Dashboard.dashboardAdmin(Some(UserBean.findByIdentityId)) )
+  }
 
   def createResume = Action {implicit request =>
     Ok( views.html.createResume.create(None))
@@ -45,13 +47,10 @@ object ResumeCtrl extends BaseCtrl {
 
   }
 
-
   // Persistent
-
   def saveResume = DBAction {implicit request =>
     Ok( views.html.createResume.create(None))
   }
-
 
 }
 
