@@ -1,4 +1,4 @@
-@(params: Map[String, String], results: List[Resume], page: Int, pageLength: Int, count: Int, user: Option[models.auth.Account] = None)
+@(params: Map[String, String], results: List[Resume], page: Int, pageLength: Int, count: Int, qs: String, user: Option[models.auth.Account] = None)
 @import views.html.helper._
 @main(pageTitle = "Админ панель") {
 
@@ -10,7 +10,7 @@
 
                         <div class="row">
                             @form(routes.ResumeCtrl.dashboardAdmin) {
-                                <input type="hidden" name="page" value="@params.get("page").getOrElse("1")"/>
+                                <input type="hidden" name="page" value="1"/>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="text" name="name" class="form-control input-lg search-input" placeholder="ФИО Клиента" value="@params.get("name").getOrElse("")">
@@ -25,7 +25,7 @@
                                         <select name="status" id="status" class="form-control">
                                             <option></option>
                                             @for(status <- models.ResumeStatus.getStatuses) {
-                                                <option value="@status._1" @if(params.get("status").getOrElse("") == status._1) { selected } >@status._2</option>
+                                                <option value="@status._2" @if(params.get("status").getOrElse("") == status._2) { selected } >@status._2</option>
                                             }
                                         </select>
                                     </div>
@@ -69,7 +69,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            @dashboardPaging(page, pageLength, count, routes.ResumeCtrl.dashboardAdmin)
+                            @dashboardPaging(qs, page, pageLength, count, routes.ResumeCtrl.dashboardAdmin)
                         }
                     </section>
                     @views.html.RightSidebar.contactInfo()

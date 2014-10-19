@@ -19,6 +19,14 @@ object ResumeDao extends SquerylDao[Resume, Long] {
       ) select(r)).page(offset, limit)
   }
 
-  def count: Long = from(table)(r => compute(countDistinct(r.id))
-  )
+  def count(fullname: Option[String] = None, date: Option[DateTime] = None, status: Option[String] = None,
+            offset: Int, limit: Int): Long = {
+    from(table)(r =>
+      where(
+        (r.fullname like fullname.?) and
+          (r.status like status.?) and
+          (r.date === date.?)
+      ) compute(countDistinct(r.id))
+    )
+  }
 }

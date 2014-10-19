@@ -46,18 +46,23 @@ object ResumeCtrl extends BaseCtrl {
         None
     }}
 
-    val paramsString = request.queryString.map { case (k,v) => k -> v.mkString }
+    val paramsString = request.queryString.map { case (k, v) => k -> v.mkString }
 
     val pageParam: Int = stringToInt(paramsString.get("page").getOrElse("1"))
 
     val resumeList = UserBean.getResumeList(params)
+    val resumeCount = UserBean.resumeCount(params)
+
+    val queryString = paramsString.foldLeft("") { (s: String, pair: (String, String)) =>
+      if(pair._1 != "page") s + "&" + pair._1 + "=" + pair._2 else "" }
 
     Ok(views.html.Dashboard.dashboardAdmin(
       params = paramsString,
       results = resumeList,
       page = pageParam,
       pageLength = UserBean.pageLength,
-      count = UserBean.resumeCount,
+      count = resumeCount,
+      qs = queryString,
       user = Some(account)
     ))
   }

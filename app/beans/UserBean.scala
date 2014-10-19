@@ -44,7 +44,12 @@ object UserBean {
   def saveResume(resume: Resume): Resume = ResumeDao.save(resume)
 
   def getResumeList(params: Map[String, Option[String]]): List[Resume] =
-    getResumeList(params.get("name").flatten, params.get("date").flatten, params.get("status").flatten, params.get("page").flatten)
+    getResumeList(
+      params.get("name").flatten.map(e => "%" + e + "%"),
+      params.get("date").flatten,
+      params.get("status").flatten,
+      params.get("page").flatten
+    )
 
   def getResumeList(name: Option[String] = None, date: Option[String] = None, status: Option[String] = None,
                     page: Option[Int] = None): List[Resume] = {
@@ -52,5 +57,17 @@ object UserBean {
     ResumeDao.filter(name, date, status, (pageNumber-1)*pageLength, pageLength).toList
   }
 
-  def resumeCount: Int = ResumeDao.count.toInt
+  def resumeCount(params: Map[String, Option[String]]): Int =
+    getResumeCountParams(
+      params.get("name").flatten.map(e => "%" + e + "%"),
+      params.get("date").flatten,
+      params.get("status").flatten,
+      params.get("page").flatten
+    )
+
+  def getResumeCountParams(name: Option[String] = None, date: Option[String] = None, status: Option[String] = None,
+  page: Option[Int] = None): Int = {
+    val pageNumber = page match { case Some(p) if p > 0 => p; case _ => 1 }
+    ResumeDao.count(name, date, status, (pageNumber-1)*pageLength, pageLength).toInt
+  }
 }
