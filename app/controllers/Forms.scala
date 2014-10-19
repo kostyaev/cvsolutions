@@ -23,7 +23,7 @@ object Forms {
       "email" -> text,
       "phone" -> text,
       "result" -> optional(longNumber),
-      "status" -> ignored("Не оплачен"),
+      "status" -> ignored(ResumeStatus.NOT_PAID),
       "date"  -> ignored(new DateTime())
     )(Resume.apply)(Resume.unapply)
   )
