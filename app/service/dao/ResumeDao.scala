@@ -24,8 +24,8 @@ object ResumeDao extends SquerylDao[Resume, Long] {
     from(table)(r =>
       where(
         (r.fullname like fullname.?) and
-          (r.status like status.?) and
-          (r.date === date.?)
+        (r.status like status.?) and
+        (r.date === date.?)
       ) compute(countDistinct(r.id))
     )
   }
