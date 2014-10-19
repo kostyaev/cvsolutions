@@ -64,5 +64,10 @@ case class Account( id: Long,
     }
   }
 
+  def isAdminInfo = isAdmin match {
+    case Some(v) => v
+    case _       => false
+  }
+
   def identityId: securesocial.core.IdentityId = securesocial.core.IdentityId(userId, providerId)
 }

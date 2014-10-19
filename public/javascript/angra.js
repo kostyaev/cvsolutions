@@ -323,7 +323,7 @@ $(function()
     });
 
 
-    $(document.body).on("keyup",".search-input", function(){
+    /*$(document.body).on("keyup",".search-input", function(){
         var input = $(this);
 
         var query = $.trim(input.val());
@@ -350,7 +350,7 @@ $(function()
 
        }
 
-    });
+    });*/
 
     $(document.body).on("change","input[type=checkbox]", function(){
        $(this).attr("value",$(this).is(':checked'));

@@ -3,7 +3,5 @@ $(function() {
         $(this).closest('form').submit();
     });
 
-    $('input#datetime').datepicker({
-        format: "yyyy/mm/yy"
-    });
+    $('input#datetime').datepicker();
 });

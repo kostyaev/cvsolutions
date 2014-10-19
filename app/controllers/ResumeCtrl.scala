@@ -4,22 +4,67 @@ import beans.UserBean
 import play.api.Logger
 import play.api.mvc._
 import Forms._
+import scala.util.{Success, Failure, Try}
+import scala.language.implicitConversions
 
 object ResumeCtrl extends BaseCtrl {
 
+  implicit def optionStringToOptionInt(str: Option[String]): Option[Int] = {
+    str match {
+      case Some(s) => Try {
+        s.toInt
+      } match {
+        case Failure(e) => None
+        case Success(e) => Option(e)
+      }
+      case _       => None
+    }
+  }
+
+  def stringToInt(str: String): Int = {
+    Try {
+      str.toInt
+    } match {
+      case Failure(e) => 1
+      case Success(e) => e
+    }
+  }
+
   def dashboard = SecuredDBAction { implicit request =>
-    Ok( views.html.Dashboard.dashboard(Some(UserBean.findByIdentityId)) )
+    Ok(views.html.Dashboard.dashboard(Some(UserBean.findByIdentityId)))
   }
 
   def dashboardAdmin = SecuredDBAction { implicit request =>
-    Ok( views.html.Dashboard.dashboardAdmin(Some(UserBean.findByIdentityId)) )
+    val account = UserBean.findByIdentityId
+    if(account.isAdminInfo) Redirect(routes.ResumeCtrl.dashboard)
+
+    val params = request.queryString.map { case (k,v) => k -> {
+      val s = v.mkString
+      if(s.length > 0)
+        Some(s)
+      else
+        None
+    }}
+
+    val paramsString = request.queryString.map { case (k,v) => k -> v.mkString }
+
+    val pageParam: Int = stringToInt(paramsString.get("page").getOrElse("1"))
+
+    val resumeList = UserBean.getResumeList(params)
+
+    Ok(views.html.Dashboard.dashboardAdmin(
+      params = paramsString,
+      results = resumeList,
+      page = pageParam,
+      pageLength = UserBean.pageLength,
+      count = UserBean.resumeCount,
+      user = Some(account)
+    ))
   }
 
   def createResume = Action { implicit request =>
-    Ok( views.html.createResume.create())
+    Ok(views.html.createResume.create())
   }
-
-  def searchResume = TODO
 
   def upload = DBAction(parse.multipartFormData) { implicit request =>
     resumeForm.bindFromRequest.fold(
