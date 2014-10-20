@@ -67,18 +67,16 @@ object ResumeCtrl extends BaseCtrl {
     val queryStringNoDate = paramsString.foldLeft("") { (s: String, pair: (String, String)) =>
       if((pair._1 != "page") && (pair._1 != "date")) s + "&" + pair._1 + "=" + pair._2 else "" }
 
-    println(UserBean.getResumeList(Map("name"-> Some("Троцкий"))))
-
     Ok(views.html.Dashboard.dashboardAdmin(
-      params = paramsString,
-      results = resumeList,
-      page = pageParam,
+      params     = paramsString,
+      results    = resumeList,
+      page       = pageParam,
       pageLength = UserBean.pageLength,
-      count = resumeCount,
-      qs = queryString,
-      qsd = queryStringNoDate,
-      sort = descToAsc(sortParam),
-      user = Some(account)
+      count      = resumeCount,
+      qs         = queryString,
+      qsd        = queryStringNoDate,
+      sort       = descToAsc(sortParam),
+      user       = Some(account)
     ))
   }
 
@@ -112,7 +110,7 @@ object ResumeCtrl extends BaseCtrl {
 
   // Persistent
   def saveResume = DBAction { implicit request =>
-    Ok( views.html.createResume.create())
+    Ok(views.html.createResume.create())
   }
 
 }
