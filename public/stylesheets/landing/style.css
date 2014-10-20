@@ -859,8 +859,15 @@ ul.list2 p.no span{
 }
 .footer-bottom {
     background: #515151;
-    padding: 1em 0;
+    /*padding: 1em 0;*/
     text-align:center;
+
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    /*background-color: #efefef;*/
 }
 .copy p{
     color:#fff;

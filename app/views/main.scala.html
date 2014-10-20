@@ -1,9 +1,12 @@
 @(pageTitle: String = "Page Title")(content: Html)
 
 @index(pageTitle) {
-    @header()
+    <div id="wrap">
+            @header()
+            @content
 
-    @content
+    </div>
 
     @footer()
+
 }
