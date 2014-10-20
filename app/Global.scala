@@ -1,4 +1,6 @@
 import models.auth.{Account, PasswordCredentialSet}
+import models.{Resume, ResumeStatus}
+import org.joda.time.DateTime
 import org.squeryl.adapters.{H2Adapter, MySQLInnoDBAdapter, PostgreSqlAdapter}
 import org.squeryl.internals.DatabaseAdapter
 import org.squeryl.{Session, SessionFactory}
@@ -7,6 +9,7 @@ import play.api.{Application, GlobalSettings, Logger}
 import service.Database
 import service.SquerylEntryPoint._
 import service.dao.AccountDao
+import service.dao.ResumeDao
 
 object Global extends GlobalSettings {
 
@@ -25,7 +28,89 @@ object Global extends GlobalSettings {
           "org.postgresql.Driver or com.mysql.jdbc.Driver")
     }
 
-  def createTestUser() {
+  def createTestData = {
+    createTestUser
+    createTestResume
+  }
+
+  def createTestResume = {
+    val resumes = List(
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Сталин",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      ),
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Троцкий",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      ),
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Наполеон",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      ),
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Севастьянов",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      ),
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Ленин",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      ),
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Цезарь",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      ),
+      Resume(
+        id = 0,
+        accountId = 1,
+        fullname = "Норвежец",
+        email = "",
+        phone = "",
+        result = None,
+        status = ResumeStatus.NOT_PAID,
+        date = DateTime.now
+      )
+    )
+
+    resumes map ResumeDao.create
+  }
+
+  def createTestUser = {
     val a = Account(
       id = 1,
       userId = "daunnc@gmail.com",
@@ -58,7 +143,7 @@ object Global extends GlobalSettings {
     inTransaction {
       Database.drop
       Database.create
-      createTestUser()
+      createTestData
     }
   }
 }
