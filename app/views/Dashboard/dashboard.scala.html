@@ -64,7 +64,7 @@
                                         <tr class="">
                                             <td>@(id+1)</td>
                                             <td>
-                                                <a href="assets/docs/@(resume.id + "." + resume.ext.get)">Скачать</a>
+                                                <a href="assets/docs/@(resume.id + "." + resume.ext.getOrElse(""))">Скачать</a>
                                             </td>
                                             <td>@resume.result.getOrElse("Не готово")</td>
                                             <td>@resume.status</td>
