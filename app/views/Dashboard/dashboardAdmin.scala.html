@@ -1,24 +1,26 @@
-@(params: Map[String, String], results: List[Resume], page: Int, pageLength: Int, count: Int, qs: String, user: Option[models.auth.Account] = None)
+@(params: Map[String, String], results: List[Resume], page: Int, pageLength: Int, count: Int,
+      qs: String, qsd: String, sort: String, user: Option[models.auth.Account] = None)
 @import views.html.helper._
+@import views.Dashboard.DateTimeHelper
+@sortingClass() = @{
+    sort match {
+        case "desc" => "sorting-desc"
+        case _      => "sorting-asc"
+    }
+}
+
 @main(pageTitle = "Админ панель") {
     @user.map{ currentUser =>
         <div class="widewrapper dashboard">
             <div class="container content">
                 <div class="row">
-                    <section class="trips-section col-md-8 with-margin">
+                    <section class="trips-section col-md-14 with-margin">
 
                         <div class="row">
                             @form(routes.ResumeCtrl.dashboardAdmin) {
                                 <input type="hidden" name="page" value="1"/>
+                                <input type="hidden" name="date" value="desc"/>
                                 <div class="row">
-                                    <div class="col-md-8">
-                                        <input type="text" name="name" class="form-control input-lg search-input" placeholder="ФИО Клиента" value="@params.get("name").getOrElse("")">
-                                    </div>
-                                    <div class="col-md-2">
-                                        <div id="resume-search" class="btn btn-grove-one btn-lg">Поиск резюме <i class="glyphicons search"></i></div></a>
-                                    </div>
-                                </div>
-                                <div class="row second">
                                     <div class="col-md-4 form-group">
                                         <label for="status">Статус</label>
                                         <select name="status" id="status" class="form-control">
@@ -28,11 +30,14 @@
                                             }
                                         </select>
                                     </div>
-                                    <div class="col-md-4">
-                                        <label for="datetime">Дата изменения</label>
-                                        <input id="datetime" type="text" name="date" data-date-dateformat="yyyy/mm/dd" class="form-control input-lg search-input" value="@params.get("datetime").getOrElse("")">
+                                    <div class="col-md-6">
+                                        <label for="name">ФИО Клиента </label>
+                                        <input type="text" if="name" name="name" class="form-control input-lg search-input" placeholder="ФИО Клиента" value="@params.get("name").getOrElse("")">
                                     </div>
-                                 </div>
+                                    <div class="col-md-2">
+                                        <div id="resume-search" class="btn btn-grove-one btn-lg">Поиск резюме <i class="glyphicons search"></i></div></a>
+                                    </div>
+                                </div>
                             }
                         </div>
 
@@ -42,10 +47,13 @@
                                     <caption></caption>
                                     <thead>
                                         <tr>
-                                            <td>Client</td>
+                                            <td>№</td>
+                                            <td>ФИО</td>
                                             <td>Файл резюме</td>
                                             <td>Статус</td>
-                                            <td>Дата изменения</td>
+                                            <td class="@sortingClass()">
+                                                <a href="@routes.ResumeCtrl.dashboardAdmin?page=@page&date=@sort@qsd">Дата изменения</a>
+                                            </td>
                                             <td>Действие</td>
                                         </tr>
 
@@ -54,11 +62,11 @@
 
                                     @for(resume <- results) {
                                         <tr class="">
-                                            <td>@resume.fullname</td>
-
                                             <td>@resume.id</td>
+                                            <td>@resume.fullname</td>
+                                            <td><a href="assets/docs/@(resume.id + "." + resume.ext.getOrElse(""))">Скачать</a></td>
                                             <td>@resume.status</td>
-                                            <td>@resume.date.toLocalDateTime</td>
+                                            <td>@DateTimeHelper.format(resume.date.toLocalDateTime)</td>
                                             <td>
                                                 <a href="#" class="btn btn-grove-one">Удалить</a>
                                             </td>
@@ -69,9 +77,22 @@
                                 </table>
                             </div>
                             @dashboardPaging(qs, page, pageLength, count, routes.ResumeCtrl.dashboardAdmin)
+                        } else {
+                            <section class="col-md-14 col-md-offset-1 with-margin empty-dashboard">
+                                <div class="row ">
+                                    <div class="col-md-10 centralize">
+                                        <div class="row icon">
+                                            <i class="glyphicons warning_sign "></i>
+                                        </div>
+
+                                        <div class="row">
+                                            <h1> Ниодного резюме соответсвующего критериям поиска пока не создано </h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
                         }
                     </section>
-                    @views.html.RightSidebar.contactInfo()
                 </div>
             </div>
         </div>

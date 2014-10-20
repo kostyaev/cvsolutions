@@ -3,14 +3,11 @@
         ((page.toDouble / bound).floor * bound) toInt
     }
     @highbound() = @{
-        if ((lowbound() + bound) * pageLength >= collectionLength)
+        if ((lowbound() + bound) * pageLength > collectionLength)
             collectionLength / pageLength + 1
         else
             lowbound() + bound
     }
-
-    @lowbound()
-    @highbound()
 
 <div class="text-center">
     <ul class="pagination">
@@ -36,7 +33,7 @@
             <li><a href="@route?page=@i@qs">@i</a></li>
         }
 
-        <li class="active"><a href="#">@page</a></li>
+        <li class="enabled"><a href="#">@page</a></li>
 
         @for(i <- page+1 to highbound()) {
             <li><a href="@route?page=@i@qs">@i</a></li>

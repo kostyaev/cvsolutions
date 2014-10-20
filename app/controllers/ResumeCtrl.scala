@@ -21,6 +21,11 @@ object ResumeCtrl extends BaseCtrl {
     }
   }
 
+  def descToAsc(str: String) = str match {
+    case "asc" => "desc"
+    case _     => "asc"
+  }
+
   def stringToInt(str: String): Int = {
     Try {
       str.toInt
@@ -49,12 +54,20 @@ object ResumeCtrl extends BaseCtrl {
     val paramsString = request.queryString.map { case (k, v) => k -> v.mkString }
 
     val pageParam: Int = stringToInt(paramsString.get("page").getOrElse("1"))
+    val sortParam = paramsString.get("date").getOrElse("desc")
 
     val resumeList = UserBean.getResumeList(params)
     val resumeCount = UserBean.resumeCount(params)
 
+    // query string without page
     val queryString = paramsString.foldLeft("") { (s: String, pair: (String, String)) =>
       if(pair._1 != "page") s + "&" + pair._1 + "=" + pair._2 else "" }
+
+    // query string without page and date sort
+    val queryStringNoDate = paramsString.foldLeft("") { (s: String, pair: (String, String)) =>
+      if((pair._1 != "page") && (pair._1 != "date")) s + "&" + pair._1 + "=" + pair._2 else "" }
+
+    println(UserBean.getResumeList(Map("name"-> Some("Троцкий"))))
 
     Ok(views.html.Dashboard.dashboardAdmin(
       params = paramsString,
@@ -63,6 +76,8 @@ object ResumeCtrl extends BaseCtrl {
       pageLength = UserBean.pageLength,
       count = resumeCount,
       qs = queryString,
+      qsd = queryStringNoDate,
+      sort = descToAsc(sortParam),
       user = Some(account)
     ))
   }

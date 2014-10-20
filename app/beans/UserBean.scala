@@ -13,7 +13,7 @@ import scala.language.implicitConversions
 
 object UserBean {
 
-  val pageLength = 2
+  val pageLength = 10
 
   implicit def stringToDateTime(str: Option[String]): Option[DateTime] = {
     str match {
@@ -60,14 +60,12 @@ object UserBean {
   def resumeCount(params: Map[String, Option[String]]): Int =
     getResumeCountParams(
       params.get("name").flatten.map(e => "%" + e + "%"),
-      params.get("date").flatten,
       params.get("status").flatten,
       params.get("page").flatten
     )
 
-  def getResumeCountParams(name: Option[String] = None, date: Option[String] = None, status: Option[String] = None,
-  page: Option[Int] = None): Int = {
+  def getResumeCountParams(name: Option[String] = None, status: Option[String] = None, page: Option[Int] = None): Int = {
     val pageNumber = page match { case Some(p) if p > 0 => p; case _ => 1 }
-    ResumeDao.count(name, date, status, (pageNumber-1)*pageLength, pageLength).toInt
+    ResumeDao.count(name, status, (pageNumber-1)*pageLength, pageLength).toInt
   }
 }

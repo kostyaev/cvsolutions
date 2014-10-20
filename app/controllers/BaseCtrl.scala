@@ -1,6 +1,6 @@
 package controllers
 
-import org.squeryl.PrimitiveTypeMode
+import org.squeryl.{Session, PrimitiveTypeMode}
 import play.api.Logger
 import play.api.i18n.Messages
 import play.api.libs.json.Json
@@ -39,6 +39,7 @@ trait BaseCtrl extends Controller with PrimitiveTypeMode with SecureSocial {
     def invokeSecuredBlock[A](ajaxCall: Boolean, authorize: Option[Authorization], request: Request[A],
                               block: SecuredRequest[A] => Future[SimpleResult]): Future[SimpleResult] =
     transaction {
+      // Session.currentSession.setLogger(msg => println(msg)) query profiling
       implicit val req = request
       val result = for (
         authenticator <- SecureSocial.authenticatorFromRequest ;
