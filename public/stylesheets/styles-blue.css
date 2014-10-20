@@ -25,7 +25,8 @@ h5,
 h6 {
     margin-top: 10px;
     font-weight: 600;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
 }
 h1 {
     font-size: 24px;
@@ -2206,4 +2207,24 @@ select#status, input#datetime {
 
 .sorting-desc:hover, .sorting-asc:hover {
     color: #939393;
+}
+
+.text-center {
+    margin-bottom: 40px;
+}
+
+.bottom30 {
+    margin-bottom: 30px;
+}
+
+.bottom10 {
+    margin-bottom: 10px;
+}
+
+.top30 {
+    margin-top: 30px;
+}
+
+.top10 {
+    margin-top: 10px;
 }

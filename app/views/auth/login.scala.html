@@ -8,12 +8,10 @@
     <div class="widewrapper">
         <div class="container login row-centered">
             <div class="col-md-6 col-centered">
-                <h2 class="row-centered">Login to your Account</h2>
-                <p class="row-centered">
-                    Please fill out the text fields below.
-                </p>
-                <div class="row">
-                    <div class="col-md-10 col-md-offset-1">
+                <h2 class="row-centered">@Messages("securesocial.login.title")</h2>
+                <p class="row-centered">@Messages("auth.login.description")</p>
+                <div class="row bottom30">
+                    <div class="col-md-10 col-md-offset-1 top10">
                         @errorMsg.map { msg =>
                             <div class="alert bg-danger">
                                 <a class="close" data-dismiss="alert">x</a>
@@ -38,7 +36,6 @@
                                 @provider("userpass", Some(loginForm))(request)
                             }
                         }
-
                     </div>
                 </div>
             </div>
