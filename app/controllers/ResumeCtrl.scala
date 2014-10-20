@@ -75,6 +75,7 @@ object ResumeCtrl extends BaseCtrl {
     resumeForm.bindFromRequest.fold(
       formWithErrors => {
         Logger.info(formWithErrors.errorsAsJson.toString())
+        BadRequest(views.html.createResume.create()).flashing("error" -> "Не верно заполнены поля формы")
       },
       resume => {
         request.body.file("file").map { picture =>
@@ -87,13 +88,11 @@ object ResumeCtrl extends BaseCtrl {
               val file = new File(s"public/docs/$id.$ext")
               file.getParentFile.mkdirs()
               picture.ref.moveTo(file, replace = true)
-            case _ => Logger.error("Bad file extension")
+              Redirect(routes.ResumeCtrl.dashboard)
+            case _ => BadRequest(views.html.createResume.create()).flashing("error" -> "Недопустимый формат файла резюме")
           }
-
         }
-      })
-    Ok("Image uploaded")
-
+      }.getOrElse(BadRequest(views.html.createResume.create()).flashing("error" -> "Прикрепите файл резюме")))
   }
 
   // Persistent

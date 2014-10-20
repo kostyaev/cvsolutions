@@ -182,10 +182,10 @@ li.fb a span:hover {
     color:#fff;
     border-bottom:none;
 }
-.consul_btn{
+.register_btn{
     float:left;
 }
-.consul_btn a{
+.register_btn a{
     background: #DE2B24;
     text-decoration: none;
     padding: 0.7em 1.5em;
@@ -205,36 +205,36 @@ li.fb a span:hover {
     line-height: 1.3em;
     font-weight: bold;
 }
-.consul_btn a:hover{
+.register_btn a:hover{
     background:#CD1A13;
 }
 
-/*.login_btn{*/
-    /*float:left;*/
-/*}*/
-/*.login_btn a{*/
-    /*background: #ffbc21;*/
-    /*text-decoration: none;*/
-    /*padding: 0.7em 1.5em;*/
-    /*display: inline-block;*/
-    /*color: #FFF;*/
-    /*font-size: 0.85em;*/
-    /*transition: 0.5s ease;*/
-    /*-o-transition: 0.5s ease;*/
-    /*-webkit-transition: 0.5s ease;*/
-    /*border: none;*/
-    /*cursor: pointer;*/
-    /*outline: none;*/
-    /*border-radius: 0.3em;*/
-    /*-webkit-border-radius: 0.3em;*/
-    /*-moz-border-radius: 0.2em;*/
-    /*-o-border-radius: 0.2em;*/
-    /*line-height: 1.3em;*/
-    /*font-weight: bold;*/
-/*}*/
-/*.login_btn a:hover{*/
-    /*background: #ffb01f;*/
-/*}*/
+.login_btn{
+    float:left;
+}
+.login_btn a{
+    background: #F8CD53;
+    text-decoration: none;
+    padding: 0.7em 1.5em;
+    display: inline-block;
+    color: #FFF;
+    font-size: 0.85em;
+    transition: 0.5s ease;
+    -o-transition: 0.5s ease;
+    -webkit-transition: 0.5s ease;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    -moz-border-radius: 0.2em;
+    -o-border-radius: 0.2em;
+    line-height: 1.3em;
+    font-weight: bold;
+}
+.login_btn a:hover{
+    background: #f8c632;
+}
 
 /*--slider--*/
 /**** Slider *****/

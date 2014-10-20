@@ -1,7 +1,6 @@
 @(params: Map[String, String], results: List[Resume], page: Int, pageLength: Int, count: Int, qs: String, user: Option[models.auth.Account] = None)
 @import views.html.helper._
 @main(pageTitle = "Админ панель") {
-
     @user.map{ currentUser =>
         <div class="widewrapper dashboard">
             <div class="container content">

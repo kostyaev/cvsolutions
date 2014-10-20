@@ -1,0 +1,9 @@
+@(pageTitle: String = "Page Title")
+
+@index(pageTitle) {
+    @views.html.landing.notAuthorized.header()
+
+    @views.html.landing.content()
+
+    @footer()
+}
