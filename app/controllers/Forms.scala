@@ -23,7 +23,8 @@ object Forms {
       "phone" -> text,
       "result" -> optional(longNumber),
       "status" -> ignored(ResumeStatus.NOT_PAID),
-      "date"  -> ignored(new DateTime())
+      "date"  -> ignored(new DateTime()),
+      "ext" -> optional(text)
     )(Resume.apply)(Resume.unapply)
   )
 

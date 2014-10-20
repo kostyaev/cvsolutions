@@ -12,7 +12,10 @@ POST        /upload                        controllers.ResumeCtrl.upload
 
 POST        /saveResume                    controllers.ResumeCtrl.saveResume
 
-GET         /                              controllers.Application.landingPage()
+GET         /                              controllers.Application.landing()
+
+GET         /old                           controllers.Application.landingPage()
+
 
 # About Us Page
 GET         /aboutus                       controllers.Application.aboutus()

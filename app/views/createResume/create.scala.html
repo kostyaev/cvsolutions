@@ -1,4 +1,4 @@
-@()
+@()(implicit flash: Flash)
 @import views.html.helper._
 
 @main(pageTitle = "Travel Planner") {
@@ -39,6 +39,12 @@
                             </div>
                         </div>
 
+                        @flash.get("error").map { msg =>
+                            <div class="alert bg-danger">
+                                <a class="close" data-dismiss="alert">x</a>
+                                @msg
+                            </div>
+                        }
 
                         <button type="submit" class="btn btn-grove-one btn-xlg btn-bold pull-right"> Сохранить </button>
 

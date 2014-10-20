@@ -10,8 +10,23 @@
                 <a class="toggleMenu" href="#">
                     Menu</a><div class="nav_icon"><img src="@routes.Assets.at("images/landing/nav_icon.png")" alt=""/></div>
                 <ul class="nav">
-                    <li><a href="/">Вернуться на главную</a></li>
-                    <li><a href="/logout">Выйти</a></li>
+                    <li class="active"><a href="#home" class="scroll">Главная</a></li>
+                    <li><a href="#about" class="scroll">О Нас</a>
+                        <ul>
+
+                        </ul>
+                    </li>
+                    <li><a href="#pricePlans" class="scroll">Наши услуги</a>
+                        <ul>
+
+                        </ul>
+                    </li>
+                    <li><a href="#app" class="scroll">Процедура заказа </a>
+                        <ul>
+
+                        </ul>
+                    </li>
+                    <li><a href="#work" class="scroll">Наши работы</a></li>
                 </ul>
                 <script type="text/javascript" src="@routes.Assets.at("javascript/landing/nav.js")"></script>
             </div><!-- end h_menu4 -->
@@ -23,6 +38,7 @@
             } ) ;
             } ) ;
             </script>
+            <div class="login_btn" style="margin-right: 10px;"><a href="/logout">Выход</a></div>
             <div class="clearfix"> </div>
         </div>
     </div>
