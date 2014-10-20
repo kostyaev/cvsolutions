@@ -1,0 +1,12 @@
+.personal-section .row {
+    margin-bottom: 10px;
+}
+html, body {
+    height: 100%;
+}
+
+#wrap {
+    min-height: 100%;
+    margin-bottom: -55px;
+
+}

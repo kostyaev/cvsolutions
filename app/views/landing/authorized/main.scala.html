@@ -1,9 +1,12 @@
 @(pageTitle: String = "Page Title")
 
 @index(pageTitle) {
-    @views.html.landing.authorized.header()
+    <div id="wrap">
+        @views.html.landing.authorized.header()
 
-    @views.html.landing.content()
+        @views.html.landing.content()
 
-    @footer()
+        @footer()
+    </div>
+
 }
