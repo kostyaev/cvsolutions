@@ -43,7 +43,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       ),
       Resume(
         id = 0,
@@ -53,7 +54,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       ),
       Resume(
         id = 0,
@@ -63,7 +65,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       ),
       Resume(
         id = 0,
@@ -73,7 +76,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       ),
       Resume(
         id = 0,
@@ -83,7 +87,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       ),
       Resume(
         id = 0,
@@ -93,7 +98,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       ),
       Resume(
         id = 0,
@@ -103,7 +109,8 @@ object Global extends GlobalSettings {
         phone = "",
         result = None,
         status = ResumeStatus.NOT_PAID,
-        date = DateTime.now
+        date = DateTime.now,
+        ext = None
       )
     )
 
