@@ -7,6 +7,10 @@ import SquerylEntryPoint._
 
 object Application extends Controller {
 
+  def landing = Action { implicit request =>
+    Ok(views.html.landing.authorized.landing())
+  }
+
   def landingPage = Action { implicit request =>
     Ok(views.html.landingpage())
   }

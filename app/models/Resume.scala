@@ -15,7 +15,8 @@ case class Resume(id: Long,
                   phone: String,
                   result: Option[Long],
                   status: String,
-                  date: DateTime
+                  date: DateTime,
+                  ext: Option[String]
                   ) extends KeyedEntity[Long] {
 
   lazy val account: ManyToOne[Account] = Database.accountToResume.right(this)

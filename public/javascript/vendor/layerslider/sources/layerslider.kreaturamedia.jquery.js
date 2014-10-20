@@ -1758,7 +1758,7 @@ function lsShowNotice(lsobj,issue,ver){
 			ls.change(ls.g.curLayerIndex,ls.g.prevNext);
 		};
 
-		// Because of an ie7 bug, we have to check & format the strings correctly
+		// Because of an ie7 bug, we have to check & dateformat the strings correctly
 
 		ls.ieEasing = function( e ){
 

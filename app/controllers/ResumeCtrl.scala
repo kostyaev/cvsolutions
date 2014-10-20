@@ -77,17 +77,14 @@ object ResumeCtrl extends BaseCtrl {
         Logger.info(formWithErrors.errorsAsJson.toString())
       },
       resume => {
-        Logger.info("got resume")
-        val id = UserBean.saveResume(resume).id
         request.body.file("file").map { picture =>
           import java.io.File
           val ExtPattern = "^.*\\.(\\w+)$".r
           val filename = picture.filename
           filename match {
             case ExtPattern(ext) if List("doc", "docx", "rtf").contains(ext) =>
-              Logger.info(ext)
-              Logger.info(picture.filename)
-              val file = new File(s"docs/$id.$ext")
+              val id = UserBean.saveResume(resume.copy(ext = Some(ext))).id
+              val file = new File(s"public/docs/$id.$ext")
               file.getParentFile.mkdirs()
               picture.ref.moveTo(file, replace = true)
             case _ => Logger.error("Bad file extension")

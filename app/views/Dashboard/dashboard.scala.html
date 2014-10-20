@@ -1,5 +1,5 @@
 @(user: Option[models.auth.Account])
-@import models.auth.Account
+@import views.Dashboard.DateTimeHelper
 @main(pageTitle = "Мои резюме") {
 
     @user.map{ currentUser =>
@@ -19,7 +19,7 @@
                                     </div>
 
                                     <div class="row">
-                                        <h1> It seems that currently you don't have any travel plans. </h1>
+                                        <h1> Ниодного резюме пока не создано </h1>
                                     </div>
 
                                     <hr/>
@@ -49,23 +49,26 @@
                                     <caption></caption>
                                     <thead>
                                         <tr>
-                                            <td>Client</td>
-                                            <td>Файл резюме</td>
+                                            <td>№</td>
+                                            <td>Отправленное резюме</td>
+                                            <td>Готовое резюме</td>
                                             <td>Статус</td>
-                                            <td>Дата изменения</td>
+                                            <td>Дата создания</td>
                                             <td>Действие</td>
                                         </tr>
 
                                     </thead>
                                     <tbody>
 
-                                    @for( resume <- currentUser.resumes) {
+                                    @for((resume,id) <- currentUser.resumes.zipWithIndex) {
                                         <tr class="">
-                                            <td>@resume.fullname</td>
-
-                                            <td>@resume.id</td>
+                                            <td>@(id+1)</td>
+                                            <td>
+                                                <a href="assets/docs/@(resume.id + "." + resume.ext.get)">Скачать</a>
+                                            </td>
+                                            <td>@resume.result.getOrElse("Не готово")</td>
                                             <td>@resume.status</td>
-                                            <td>@resume.date.toLocalDateTime</td>
+                                            <td>@DateTimeHelper.format(resume.date.toLocalDateTime)</td>
                                             <td>
                                                 <a href="#" class="btn btn-grove-one">Удалить</a>
                                             </td>

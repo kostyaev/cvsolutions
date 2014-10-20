@@ -1,0 +1,372 @@
+@(pageTitle: String = "Page Title")(header: Html)
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Твое успешное резюме! </title>
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/vendor/bootstrap/bootstrap.css")">
+
+            <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            <!-- Custom Theme files -->
+        <link href="@routes.Assets.at("stylesheets/landing/style.css")" rel='stylesheet' type='text/css' />
+        <link href="@routes.Assets.at("stylesheets/landing/style_pt.css")" rel='stylesheet' type='text/css' />
+
+
+        <!-- Custom Theme files -->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+        <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+        <script src="@routes.Assets.at("javascript/landing/move-top.js")" ></script>
+        <script src="@routes.Assets.at("javascript/landing/easing.js")"></script>
+
+            <!---- start-smoth-scrolling---->
+    </head>
+    <body>
+        @header
+        <div class="slider" id="home">
+            <div class="slider_container">
+                <div class="wmuSlider example1">
+                    <div class="wmuSliderWrapper">
+                        <article style="position: absolute; width: 100%; opacity: 0;">
+                            <div class="banner-wrap">
+                                <div class="slider-left">
+                                    <h1>Мы позволим Вашему резюме </h1>
+                                    <p class="top">рассказать о Вас с самой лучшей стороны!</p>
+                                    <ul class="button">
+                                        <li><a href="#">Бесплатная консультация</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                        <article style="position: relative; width: 100%; opacity: 1;">
+                            <div class="banner-wrap">
+                                <div class="slider-left">
+                                    <h1>Мы предоставим Вам индивидуальный подход </h1>
+                                    <p class="top">и 100% гарантию качества выполненной услуги!</p>
+                                    <ul class="button">
+                                        <li><a href="#">Бесплатная консультация</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article style="position: relative; width: 100%; opacity: 1;">
+                            <div class="banner-wrap">
+                                <div class="slider-left">
+                                    <h1>Мы поможем Вам в построении успешной карьеры </h1>
+                                    <p class="top">и достижении профессиональных целей!</p>
+                                    <ul class="button">
+                                        <li><a href="#">Позвонить сейчас!</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+                <script src="@routes.Assets.at("javascript/landing/jquery.wmuSlider.js")"></script>
+                <script>
+                $('.example1').wmuSlider();
+                </script>
+            </div>
+        </div>
+
+
+
+        <div class="main">
+            <div id="about" class="about">
+                <div class="container">
+                    <div class="gallery-head text-center">
+                        <h3>О Нас</h3>
+                        <p>Мы команда экспертов в области консультирования по вопросам рекрутмента и процессов проведения интервью, а в частности разработки профессиональных резюме для любого уровня позиции и сферы деятельности. Мы помогли уже сотням соискателям быстро и успешно найти работу!</p>
+                        <span> </span>
+                    </div>
+                    <div class="row text-center">
+                        <div class="col-md-4 about_grid">
+                            <i class="icon1"> </i>
+                            <h3><a href="#">Facebook Marketing</a></h3>
+                            <p>Желание достичь успеха и самореализоваться становится символом нашего времени. В то время, как стремление к финансовому достатку и благополучию всегда обусловлено наличием работы, которая обеспечивает не только уверенный и стабильный доход, но и удовлетворение от реализованных задач.</p>
+                        </div>
+                        <div class="col-md-4 about_grid">
+                            <i class="icon2"> </i>
+                            <h3><a href="#">Landing pages Creation</a></h3>
+                            <p>Поиск работы – это всегда сложный и ответственный шаг, который безусловно оказывает влияние на нашу жизнь и окружение. Зачастую немногословные отказы или полное игнорирование вашего запроса связано исключительно с профайлом, которое вы отправляете потенциальному работодателю.</p>
+                        </div>
+                        <div class="col-md-4 about_grid">
+                            <i class="icon3"> </i>
+                            <h3><a href="#">Ads management</a></h3>
+                            <p>Имея полную осведомленность о процессе и правилах отбора кандидатов на собеседование, мы, объединяя знания и опыт, создали команду профессионалов в области рекрутмента и консалтинга по вопросам трудоустройства.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <body>
+                <div class="container-fluid">
+                    <div class="row-fluid">
+
+                    </div>
+                    <div class="row-fluid">
+                        <section id="pricePlans">
+                            <div class="container">
+                                <div class="gallery-head text-center">
+                                    <h3>Наши услуги</h3>
+                                </div>
+                            </div>
+
+                            <ul id="plans">
+                                <li class="plan">
+                                    <ul class="planContainer">
+                                        <li class="title"><h2>«Стандарт» </h2></li>
+                                        <li class="price"><p>700руб.</p></li>
+                                        <li>
+                                            <ul class="options">
+                                                <li>2x <span>option 1</span></li>
+                                                <li>Free <span>option 2</span></li>
+                                                <li>Unlimited <span>option 3</span></li>
+                                                <li>Unlimited <span>option 4</span></li>
+                                                <li>1x <span>option 5</span></li>
+                                            </ul>
+                                        </li>
+                                        <li class="button"><a href="#">Заказать</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="plan">
+                                    <ul class="planContainer">
+                                        <li class="title"><h2 class="bestPlanTitle">«Премиум» </h2></li>
+                                        <li class="price"><p class="bestPlanPrice">1500руб.</p></li>
+                                        <li>
+                                            <ul class="options">
+                                                <li>2x <span>option 1</span></li>
+                                                <li>Free <span>option 2</span></li>
+                                                <li>Unlimited <span>option 3</span></li>
+                                                <li>Unlimited <span>option 4</span></li>
+                                                <li>1x <span>option 5</span></li>
+                                            </ul>
+                                        </li>
+                                        <li class="button"><a class="bestPlanButton" href="#">Заказать</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="plan">
+                                    <ul class="planContainer">
+                                        <li class="title"><h2>«Студент» </h2></li>
+                                        <li class="price"><p>1000руб.</p></li>
+                                        <li>
+                                            <ul class="options">
+                                                <li>2x <span>option 1</span></li>
+                                                <li>Free <span>option 2</span></li>
+                                                <li>Unlimited <span>option 3</span></li>
+                                                <li>Unlimited <span>option 4</span></li>
+                                                <li>1x <span>option 5</span></li>
+                                            </ul>
+                                        </li>
+                                        <li class="button"><a href="#">Заказать</a></li>
+                                    </ul>
+                                </li>
+
+                                <li class="plan">
+                                    <ul class="planContainer">
+                                        <li class="title"><h2>«Бюджетный»</h2></li>
+                                        <li class="price"><p>800руб.</p></li>
+                                        <li>
+                                            <ul class="options">
+                                                <li>2x <span>option 1</span></li>
+                                                <li>Free <span>option 2</span></li>
+                                                <li>Unlimited <span>option 3</span></li>
+                                                <li>Unlimited <span>option 4</span></li>
+                                                <li>1x <span>option 5</span></li>
+                                            </ul>
+                                        </li>
+                                        <li class="button"><a href="#">Заказать</a></li>
+                                    </ul>
+                                </li>
+                            </ul> <!-- End ul#plans -->
+                        </section>
+
+
+                        <div class="approach" id="app">
+                            <div class="container">
+                                <div class="gallery-head text-center">
+                                    <h3>Процедура заказа</h3>
+                                    <span> </span>
+                                </div>
+                                <ul class="list1">
+                                    <li class="list1_img"><img src="@routes.Assets.at("images/landing/pic1.jpg")" class="img-responsive" alt=""/></li>
+                                    <li class="list1_desc"><h3><a href="#">Шаг 1: Название1</a></h3>
+                                        <p>Как только Вы разместите свой заказ и выберете тип услуги, мы попросим Вас переслать нам копию вашего резюме и(или) заполнить обычную анкету, которая поможем нам получить всю необходимую информацию о Вас. </p>
+                                    </li>
+                                    <p class="no">1<br><span>Step</span></p>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <ul class="list2">
+                                    <li class="list1_desc"><h3><a href="#">Шаг 2: Название 2</a></h3>
+                                        <p>Если Вы выбрали услугу «Стандарт» или «Рецензия резюме», то в таком случае наш консультант сразу же начнет работать над Вашим резюме, внося изменения в предоставленную информацию и разрабатывая наиболее удачную структуру.</p>
+                                        <p >В случае, если вы выбрали услугу «Премиум», прежде чем начать работу наш консультант свяжется с Вами, чтобы обсудить все детали Вашего резюме. Данная консультация может быть произведена по телефону или через электронную почту, что зависит прежде всего от Вашей доступности и пожеланий. Большинство клиентов выбирают консультацию через электронную почту, как простой и удобный способ общения.</p>
+                                    </li>
+                                    <li class="list1_img"><img src="@routes.Assets.at("images/landing/pic2.jpg")" class="img-responsive" alt=""/></li>
+                                    <p class="no">2<br><span>Step</span></p>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <ul class="list1">
+                                    <li class="list1_img"><img src="@routes.Assets.at("images/landing/pic3.jpg")" class="img-responsive" alt=""/></li>
+                                    <li class="list1_desc"><h3><a href="#">Щаг 3: Название 3</a></h3>
+                                        <p>Как только Ваше резюме будет готово, мы отправим Вам на почту только что разработанный и написанный черновой вариант. У вас есть 7 дней, в течение которых вы можете обратиться к нам для того, чтобы обсудить любые изменения, которые Вы хотели бы внести.</p>
+
+                                        <p>В услуге «Стандарт» предусмотрено лишь только одно обращение в течение 7 дней, в услуге «Премиум» предоставляется возможность неограниченного количества обращений за комментариями и внесением изменений.
+                                        </p>
+                                    </li>
+                                    <p class="no">3<br><span>Step</span></p>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                                <ul class="list2">
+                                    <li class="list1_desc"><h3><a href="#">Шаг 4: Название 4</a></h3>
+                                        <p>Как только мы получим Ваши комментарии, мы окончательно доработаем документ и отправим Вам на почту финальную версию резюме в формате Word или PDF.</p>
+
+                                        <p>В случае, если Вы обратитесь с просьбой о внесении изменений, которые, по нашему мнению не принесут положительного результата, мы обязательно объясним нашу позицию и предоставим полное разъяснение того, почему этого не стоит делать. После многолетней работы мы знаем, на какие аспекты обращает внимание потенциальный работодатель.
+                                        </p>
+                                    </li>
+                                    <li class="list1_img"><img src="@routes.Assets.at("images/landing/pic4.jpg")" class="img-responsive" alt=""/></li>
+                                    <p class="no">4<br><span>Step</span></p>
+                                    <div class="clearfix"> </div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="work" id="work">
+                            <div class="container">
+                                <div class="work_top text-center">
+                                    <h3>Наши работы</h3>
+                                    <p>We are added our featured works below</p>
+                                    <span> </span>
+                                </div>
+                                <div class="col_1_of_4 span_1_of_4">
+                                    <div class="port-grid">
+                                        <div class="port-grid-text">
+                                            <img src="@routes.Assets.at("images/landing/arrow_icon.png")" alt=""/>
+                                            <h3>Project Name</h3>
+                                            <p>Facebook Marketing</p>
+                                        </div>
+                                        <div class="port-grid-pic block last">
+                                            <a href="#" class="b-link-stripe b-animate-go  thickbox">
+                                                <img src="@routes.Assets.at("images/landing/w1.jpg")" class="img-responsive" style="top: 0px;"><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="@routes.Assets.at("images/landing/plus.png")" alt="" style="top: 0px;"></h2>
+                                            </div></a>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                                <div class="col_1_of_4 span_1_of_4">
+                                    <div class="port-grid">
+                                        <div class="port-grid-text">
+                                            <img src="@routes.Assets.at("images/landing/images/arrow_icon.png")" alt=""/>
+                                            <h3>Project Name</h3>
+                                            <p>Landing Page</p>
+                                        </div>
+                                        <div class="port-grid-pic block last">
+                                            <a href="#" class="b-link-stripe b-animate-go  thickbox">
+                                                <img src="images/w2.jpg" class="img-responsive" style="top: 0px;"><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                                            </div></a>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                                <div class="col_1_of_4 span_1_of_4">
+                                    <div class="port-grid">
+                                        <div class="port-grid-pic block last">
+                                            <a href="#" class="b-link-stripe b-animate-go  thickbox">
+                                                <img src="@routes.Assets.at("images/landing/images/w3.jpg")" class="img-responsive" style="top: 0px;"><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                                            </div></a>
+                                        </div>
+                                        <div class="port-grid-text">
+                                            <img src="@routes.Assets.at("images/landing/images/arrow_icon.png")" alt=""/>
+                                            <h3>Project Name</h3>
+                                            <p>Facebook Marketing</p>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                                <div class="col_1_of_4 span_1_of_4">
+                                    <div class="port-grid">
+                                        <div class="port-grid-pic block last">
+                                            <a href="#" class="b-link-stripe b-animate-go  thickbox">
+                                                <img src="@routes.Assets.at("images/landing/w4.jpg")" class="img-responsive" style="top: 0px;"><div class="b-wrapper"><h2 class="b-animate b-from-left    b-delay03 "><img src="images/plus.png" alt="" style="top: 0px;"></h2>
+                                            </div></a>
+                                        </div>
+                                        <div class="port-grid-text">
+                                            <img src="@routes.Assets.at("images/landing/arrow_icon.png") alt=""/>
+                                            <h3>Project Name</h3>
+                                            <p>Landing Page</p>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact">
+                            <div class="container">
+                                <div class="work_top text-center">
+                                    <h3>Get Your Facebook Ananlysis Now</h3>
+                                    <p>Enter your details below</p>
+                                    <span> </span>
+                                </div>
+                                <div class="contact-form_grid">
+                                    <p>diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam</p>
+                                    <form method="post" action="contact-post.html">
+                                        <input type="text" class="textbox" value="Your name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your name';}">
+                                        <input type="text" class="textbox" value="Contact Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Contact Number';}">
+                                        <input type="text" class="textbox" value="Company Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Company Name';}">
+                                        <input type="submit" value="Submit Now">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer_top">
+                        <div class="container">
+                            <h3>Get in touch</h3>
+                            <div class="social">
+                                <ul>
+                                    <li><a href=""> <i class="facebook"> </i> </a></li>
+                                    <li><a href=""><i class="twitter"> </i> </a></li>
+                                    <li><a href=""><i class="google"> </i> </a></li>
+                                    <li><a href=""><i class="linkedin"> </i> </a></li>
+                                    <div class="clear"> </div>
+                                </ul>
+                            </div>
+                            <p>Subscribe to our newsletter to stay update with what is new</p>
+                            <div class="footer_form">
+                                <form method="post" action="contact-post.html">
+                                    <input type="text" class="textbox" value="Email Address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email Address';}">
+                                    <input type="submit" value="Subscribe">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <div class="copy">
+                                <p>&copy; 2014 Template by <a href="http://w3layouts.com" target="_blank"> w3layouts</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                    /*
+                    var defaults = {
+                          containerID: 'toTop', // fading element id
+                        containerHoverID: 'toTopHover', // fading element hover id
+                        scrollSpeed: 1200,
+                        easingType: 'linear'
+                     };
+                    */
+
+                    $().UItoTop({ easingType: 'easeOutQuart' });
+
+                    });
+                    </script>
+                    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+            </body>
+</html>
+
