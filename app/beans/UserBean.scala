@@ -45,7 +45,7 @@ object UserBean {
 
   def getResumeList(params: Map[String, Option[String]]): List[Resume] =
     getResumeList(
-      params.get("name").flatten.map(e => "%" + e + "%"),
+      params.get("name").flatten.map(e => "%" + e.toLowerCase + "%"),
       params.get("date").flatten,
       params.get("status").flatten,
       params.get("page").flatten
@@ -59,7 +59,7 @@ object UserBean {
 
   def resumeCount(params: Map[String, Option[String]]): Int =
     getResumeCountParams(
-      params.get("name").flatten.map(e => "%" + e + "%"),
+      params.get("name").flatten.map(e => "%" + e.toLowerCase + "%"),
       params.get("status").flatten,
       params.get("page").flatten
     )

@@ -13,7 +13,7 @@ object ResumeDao extends SquerylDao[Resume, Long] {
               offset: Int, limit: Int) = {
     from(table)(r =>
       where(
-        (r.fullname like fullname.?) and
+        (lower(r.fullname) like fullname.?) and
         (r.status like status.?)
       ) select(r) orderBy(getOrderByValue(r, date))).page(offset, limit)
   }
@@ -21,7 +21,7 @@ object ResumeDao extends SquerylDao[Resume, Long] {
   def count(fullname: Option[String] = None, status: Option[String] = None, offset: Int, limit: Int): Long = {
     from(table)(r =>
       where(
-        (r.fullname like fullname.?) and
+        (lower(r.fullname) like fullname.?) and
         (r.status like status.?)
       ) compute(countDistinct(r.id))
     )
