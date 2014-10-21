@@ -10,9 +10,10 @@ GET         /admin/dashboard               controllers.ResumeCtrl.dashboardAdmin
 GET         /createResume                  controllers.ResumeCtrl.createResume
 POST        /upload                        controllers.ResumeCtrl.upload
 
-POST        /saveResume                    controllers.ResumeCtrl.saveResume
 
-GET         /                              controllers.Application.landing()
+GET         /deleteResume/:id              controllers.ResumeCtrl.deleteResume(id: Long)
+
+GET         /                              controllers.ResumeCtrl.mainPage()
 
 GET         /old                           controllers.Application.landingPage()
 
@@ -27,18 +28,6 @@ GET         /faq                           controllers.Application.faq()
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                  controllers.Assets.at(path="/public", file)
 
-
-# Budget order forms
-GET         /travelplanner                 controllers.Application.travelPlanner(id:Option[String] ?= None)
-GET         /removeplan                    controllers.Application.removePlan(id:Option[String] ?= None)
-
-# Budget order forms
-
-# Admin Response Form to a client request
-GET         /travelplanresponse            controllers.Application.travelResponse(id:Option[String] ?= None)
-GET         /seeresponse                   controllers.Application.seeResponse(id:Option[String] ?= None)
-
-POST        /dashboard                     controllers.Application.dashboard
 
 #Favicon
 #GET     /favicon.ico                controllers.Assets.at(path="/public/images", file="favicon.png")

@@ -68,4 +68,9 @@ object UserBean {
     val pageNumber = page match { case Some(p) if p > 0 => p; case _ => 1 }
     ResumeDao.count(name, status, (pageNumber-1)*pageLength, pageLength).toInt
   }
+
+
+  def deleteResume(id: Long, accountId: Long):Option[Boolean] = {
+    ResumeDao.findByIdWithAccountId(id, accountId).map(resume => ResumeDao.delete(resume))
+  }
 }

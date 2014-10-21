@@ -1,6 +1,7 @@
 package controllers
 
 import beans.UserBean
+import controllers.Application._
 import play.api.Logger
 import play.api.mvc._
 import Forms._
@@ -32,6 +33,14 @@ object ResumeCtrl extends BaseCtrl {
     } match {
       case Failure(e) => 1
       case Success(e) => e
+    }
+  }
+
+
+  def mainPage = UserAwareAction { implicit request =>
+    request.user match {
+      case Some(user) => Ok(views.html.landing.authorized.main())
+      case _ => Ok(views.html.landing.notAuthorized.main())
     }
   }
 
@@ -84,7 +93,15 @@ object ResumeCtrl extends BaseCtrl {
     Ok(views.html.createResume.create())
   }
 
-  def upload = DBAction(parse.multipartFormData) { implicit request =>
+
+  def deleteResume(id: Long) = SecuredDBAction { implicit request =>
+    val account = UserBean.findByIdentityId
+    UserBean.deleteResume(id, account.id)
+    Ok(views.html.Dashboard.dashboard(Some(account)))
+
+  }
+
+  def upload = SecuredDBAction(parse.multipartFormData) { implicit request =>
     resumeForm.bindFromRequest.fold(
       formWithErrors => {
         Logger.info(formWithErrors.errorsAsJson.toString())
@@ -108,10 +125,9 @@ object ResumeCtrl extends BaseCtrl {
       }.getOrElse(BadRequest(views.html.createResume.create()).flashing("error" -> "Прикрепите файл резюме")))
   }
 
-  // Persistent
-  def saveResume = DBAction { implicit request =>
-    Ok(views.html.createResume.create())
-  }
+
+
+
 
 }
 

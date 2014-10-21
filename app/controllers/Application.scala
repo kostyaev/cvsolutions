@@ -7,10 +7,6 @@ import SquerylEntryPoint._
 
 object Application extends Controller {
 
-  def landing = Action { implicit request =>
-    Ok(views.html.landing.notAuthorized.main())
-  }
-
   def landingPage = Action { implicit request =>
     Ok(views.html.landingpage())
   }
@@ -26,17 +22,6 @@ object Application extends Controller {
     Ok(views.html.faq())
   }
 
-  def travelPlanner(id:Option[String]) = TODO
-
-  def seeResponse(id:Option[String]) = TODO
-
-
-  def removePlan(id:Option[String]) = TODO
-
-
-  def travelResponse(id:Option[String]) = TODO
-
-  def   dashboard = TODO
 
 }
 

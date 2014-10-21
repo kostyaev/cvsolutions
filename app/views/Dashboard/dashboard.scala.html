@@ -35,7 +35,7 @@
                         </section>
                     }else{
 
-                        <section class="trips-section col-md-8 with-margin">
+                        <section class="trips-section col-md-12 with-marßgin">
 
                             <div class="row ">
                                 <div class="col-md-2">
@@ -70,7 +70,8 @@
                                             <td>@resume.status</td>
                                             <td>@DateTimeHelper.format(resume.date.toLocalDateTime)</td>
                                             <td>
-                                                <a href="#" class="btn btn-grove-one">Удалить</a>
+                                                <a href="#" class="btn btn-grove-one">Оплатить</a>
+                                                <a href="@routes.ResumeCtrl.deleteResume(resume.id)" class="btn btn-grove-one">Удалить</a>
                                             </td>
                                         </tr>
 
@@ -85,7 +86,6 @@
 
                     }
 
-                    @views.html.RightSidebar.contactInfo()
 
                 </div>
             </div>

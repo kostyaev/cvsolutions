@@ -18,6 +18,10 @@ object ResumeDao extends SquerylDao[Resume, Long] {
       ) select(r) orderBy(getOrderByValue(r, date))).page(offset, limit)
   }
 
+  def findByIdWithAccountId(id: Long, accountId: Long) = {
+    table.where(r => r.id === id).singleOption
+  }
+
   def count(fullname: Option[String] = None, status: Option[String] = None, offset: Int, limit: Int): Long = {
     from(table)(r =>
       where(
