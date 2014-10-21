@@ -118,6 +118,16 @@ object ResumeCtrl extends BaseCtrl {
               val file = new File(s"public/docs/$id.$ext")
               file.getParentFile.mkdirs()
               picture.ref.moveTo(file, replace = true)
+
+              Mailer.sendEmail(
+                subject = "Создано резюме",
+                recipient = resume.fullname,
+                recipientEmail = resume.email,
+                name = "CV Solutions",
+                fromEmail = "virtuozz.me@gmail.com",
+                message = "Вами было создано резюме, теперь Вам необходимо его оплатить"
+              )
+
               Redirect(routes.ResumeCtrl.dashboard)
             case _ => BadRequest(views.html.createResume.create()).flashing("error" -> "Недопустимый формат файла резюме")
           }
