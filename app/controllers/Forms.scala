@@ -6,13 +6,6 @@ import play.api.data.Form
 import play.api.data.Forms._
 
 object Forms {
-  val unitViewForm = Form[Int](
-    mapping("unitNumber" -> number)
-      // binding
-      (number => number)
-      // unbinding
-      (info => Some(info))
-  )
 
   val resumeForm = Form(
     mapping(
